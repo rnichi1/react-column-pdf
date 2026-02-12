@@ -1,13 +1,13 @@
 import { isNil } from '@react-pdf/fns';
 
+import { Engines } from '../engines';
+import blockHeight from '../paragraph/height';
+import sliceBlockAtHeight from '../paragraph/sliceAtHeight';
+import truncateBlock from '../paragraph/truncate';
 import copyRect from '../rect/copy';
 import cropRect from '../rect/crop';
-import blockHeight from '../paragraph/height';
-import truncateBlock from '../paragraph/truncate';
-import layoutParagraph from './layoutParagraph';
-import sliceBlockAtHeight from '../paragraph/sliceAtHeight';
 import { AttributedString, Container, Paragraph } from '../types';
-import { Engines } from '../engines';
+import layoutParagraph from './layoutParagraph';
 
 /**
  * Layout paragraphs inside container until it does not
@@ -37,19 +37,21 @@ const typesetter = (engines: Engines, options, container: Container) => {
       const paragraph = layout(paragraphRect, nextParagraph);
       const slicedBlock = paragraph.slice(0, linesCount);
       const linesHeight = blockHeight(slicedBlock);
+      const availableHeight =
+        (paragraphRect as Container).effectiveHeight ?? paragraphRect.height;
 
       const shouldTruncate =
         truncateEllipsis && paragraph.length !== slicedBlock.length;
 
       linesCount -= slicedBlock.length;
 
-      if (paragraphRect.height >= linesHeight) {
+      if (availableHeight >= linesHeight) {
         result.push(shouldTruncate ? truncateBlock(slicedBlock) : slicedBlock);
         paragraphRect = cropRect(linesHeight, paragraphRect);
         nextParagraph = paragraphs.shift();
       } else {
         result.push(
-          truncateBlock(sliceBlockAtHeight(paragraphRect.height, slicedBlock)),
+          truncateBlock(sliceBlockAtHeight(availableHeight, slicedBlock)),
         );
         break;
       }

@@ -87,6 +87,32 @@ describe('text layoutText', () => {
     expect(lines.length).toEqual(2);
   });
 
+  test('should layout text in two columns when columns=2', async () => {
+    const width = 400;
+    const columnGap = 18;
+    const colWidth = (width - columnGap) / 2;
+    // Use short column height so text flows to second column
+    const columnHeight = 50;
+    const node = createTextNode(TEXT, {}, { columns: 2, columnGap });
+    const lines = layoutText(node, width, columnHeight, fontStore);
+
+    // With 50px per column, we fit ~2 lines per column. TEXT produces many lines.
+    // Get unique x positions (columns)
+    const xPositions = [...new Set(lines.map((l) => Math.round(l.box!.x)))];
+    expect(xPositions.length).toBeGreaterThanOrEqual(2);
+
+    // First column at x=0, second at colWidth+columnGap
+    expect(xPositions).toContain(0);
+    expect(xPositions).toContain(Math.round(colWidth + columnGap));
+  });
+
+  test('should use single column when columns=1 or undefined', async () => {
+    const node = createTextNode(TEXT);
+    const lines = layoutText(node, 400, 500, fontStore);
+    // All lines should have x=0 (first column)
+    expect(lines.every((l) => l.box!.x === 0)).toBe(true);
+  });
+
   test('should allow hyphenation callback to be overriden', async () => {
     const text = 'reallylongtext';
     const hyphens = ['really­', 'long', 'text'];

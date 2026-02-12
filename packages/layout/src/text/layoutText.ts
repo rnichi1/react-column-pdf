@@ -39,8 +39,10 @@ const getTextOverflow = (node) => node.style?.textOverflow;
 const getContainer = (width, height, node) => {
   const maxLines = getMaxLines(node);
   const textOverflow = getTextOverflow(node);
+  const columns = node.props?.columns ?? 1;
+  const columnGap = node.props?.columnGap ?? 18;
 
-  return {
+  const container = {
     x: 0,
     y: 0,
     width,
@@ -48,6 +50,19 @@ const getContainer = (width, height, node) => {
     height: height || Infinity,
     truncateMode: textOverflow,
   };
+
+  if (columns > 1) {
+    const availableHeight = height || Infinity;
+    return {
+      ...container,
+      columns,
+      columnGap,
+      effectiveHeight:
+        availableHeight !== Infinity ? availableHeight * columns : undefined,
+    };
+  }
+
+  return container;
 };
 
 /**
