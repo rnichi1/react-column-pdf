@@ -64,6 +64,27 @@ import ReactPDF from 'react-column-pdf';
 ReactPDF.render(<MyDocument />, `${__dirname}/example.pdf`);
 ```
 
+### Vite (drop-in for @react-pdf/renderer)
+
+Use an alias so existing `@react-pdf/renderer` imports resolve to this package:
+
+```js
+// vite.config.ts
+resolve: {
+  alias: {
+    '@react-pdf/renderer': 'react-column-pdf',
+  },
+},
+```
+
+If you see "Failed to resolve entry for package react-column-pdf", add it to `optimizeDeps.include`:
+
+```js
+optimizeDeps: {
+  include: ['react-column-pdf'],
+},
+```
+
 ## License
 
 MIT © [rnichi1](https://github.com/rnichi1)

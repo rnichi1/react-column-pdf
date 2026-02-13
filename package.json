@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "react-column-pdf",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "author": "rnichi1",
   "homepage": "https://github.com/rnichi1/react-column-pdf#readme",
@@ -12,9 +12,10 @@
   "types": "./packages/renderer/index.d.ts",
   "exports": {
     ".": {
+      "types": "./packages/renderer/index.d.ts",
       "import": "./packages/renderer/lib/react-pdf.js",
       "require": "./packages/renderer/lib/react-pdf.js",
-      "types": "./packages/renderer/index.d.ts"
+      "default": "./packages/renderer/lib/react-pdf.js"
     }
   },
   "browser": {
