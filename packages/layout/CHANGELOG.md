@@ -1,5 +1,20 @@
 # @react-pdf/layout
 
+## 4.4.4-rnichi.0
+
+### Patch Changes
+
+- Fix multi-column pagination to avoid premature page breaks caused by pre-column height checks. Multi-column containers are now handled before generic split logic so content that fits across columns stays on the current page.
+
+## 4.4.3
+
+### Patch Changes
+
+- Initial npm publish
+
+- Updated dependencies []:
+  - @rnichi11/react-column-pdf-textkit@6.1.1
+
 ## 4.4.2
 
 ### Patch Changes

@@ -2,7 +2,7 @@ import * as P from '@react-pdf/primitives';
 import { SafeStyle, Style } from '@react-pdf/stylesheet';
 import { HyphenationCallback } from '@react-pdf/font';
 import { YogaNode } from 'yoga-layout/load';
-import { Paragraph } from '@rnich1/react-column-pdf-textkit';
+import { Paragraph } from '@rnichi11/react-column-pdf-textkit';
 
 import { Box, NodeProps, Origin, RenderProp } from './base';
 import { SafeTextInstanceNode, TextInstanceNode } from './text-instance';

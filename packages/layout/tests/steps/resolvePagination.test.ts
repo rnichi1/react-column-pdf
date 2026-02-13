@@ -583,4 +583,65 @@ describe('pagination step', () => {
     expect(col2.children!.length).toBe(2);
     expect((col2.children![0] as any).props.break).toBe(false);
   });
+
+  test('should not create a new page for multi-column view based on pre-column height', async () => {
+    const yoga = await loadYoga();
+
+    const layout = calcLayout({
+      type: 'DOCUMENT',
+      yoga,
+      props: {},
+      children: [
+        {
+          type: 'PAGE',
+          props: {},
+          style: {
+            width: 100,
+            height: 100,
+          },
+          children: [
+            {
+              type: 'VIEW',
+              props: { columns: 2, columnGap: 18 },
+              style: { width: 100 },
+              // Simulate inflated pre-column height from single-flow layout
+              box: { top: 0, left: 0, width: 100, height: 130 },
+              children: [
+                {
+                  type: 'VIEW',
+                  style: { height: 20 },
+                  props: {},
+                  children: [],
+                },
+                {
+                  type: 'VIEW',
+                  style: { height: 20 },
+                  props: {},
+                  children: [],
+                },
+                {
+                  type: 'VIEW',
+                  style: { height: 20 },
+                  props: {},
+                  children: [],
+                },
+                {
+                  type: 'VIEW',
+                  style: { height: 20 },
+                  props: {},
+                  children: [],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    });
+
+    expect(layout.children.length).toBe(1);
+    const multiColView = layout.children[0].children![0];
+    expect(multiColView.children!.length).toBe(2);
+    expect(multiColView.children![0].children!.length).toBe(2);
+    expect(multiColView.children![1].children!.length).toBe(2);
+  });
 });

@@ -128,40 +128,9 @@ const splitNodes = (
       break;
     }
 
-    if (shouldSplit) {
-      const [currentChild, nextChild] = split(
-        child,
-        height,
-        contentArea,
-        fontStore,
-        undefined,
-        containerWidth,
-      );
-
-      // All children are moved to the next page, it doesn't make sense to show the parent on the current page
-      if (child.children.length > 0 && currentChild.children.length === 0) {
-        // But if the current page is empty then we can just include the parent on the current page
-        if (currentChildren.length === 0) {
-          currentChildren.push(child, ...futureFixedNodes);
-          nextChildren.push(...futureNodes);
-        } else {
-          const box = Object.assign({}, child.box, {
-            top: child.box.top - height,
-          });
-          const next = Object.assign({}, child, { box });
-
-          currentChildren.push(...futureFixedNodes);
-          nextChildren.push(next, ...futureNodes);
-        }
-        break;
-      }
-
-      if (currentChild) currentChildren.push(currentChild);
-      if (nextChild) nextChildren.push(nextChild);
-
-      continue;
-    }
-
+    // Handle multi-column containers before generic split logic.
+    // `child.box.height` here comes from pre-column layout and can overestimate
+    // required height, which would trigger premature page splits.
     if (
       isView(child) &&
       ((child as SafeViewNode).props?.columns ?? 1) > 1 &&
@@ -229,9 +198,44 @@ const splitNodes = (
         containerWidth,
       );
       currentChildren.push(childToPush);
-    } else {
-      currentChildren.push(child);
+      continue;
     }
+
+    if (shouldSplit) {
+      const [currentChild, nextChild] = split(
+        child,
+        height,
+        contentArea,
+        fontStore,
+        undefined,
+        containerWidth,
+      );
+
+      // All children are moved to the next page, it doesn't make sense to show the parent on the current page
+      if (child.children.length > 0 && currentChild.children.length === 0) {
+        // But if the current page is empty then we can just include the parent on the current page
+        if (currentChildren.length === 0) {
+          currentChildren.push(child, ...futureFixedNodes);
+          nextChildren.push(...futureNodes);
+        } else {
+          const box = Object.assign({}, child.box, {
+            top: child.box.top - height,
+          });
+          const next = Object.assign({}, child, { box });
+
+          currentChildren.push(...futureFixedNodes);
+          nextChildren.push(next, ...futureNodes);
+        }
+        break;
+      }
+
+      if (currentChild) currentChildren.push(currentChild);
+      if (nextChild) nextChildren.push(nextChild);
+
+      continue;
+    }
+
+    currentChildren.push(child);
   }
 
   return [currentChildren, nextChildren];

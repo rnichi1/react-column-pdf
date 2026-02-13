@@ -1,5 +1,11 @@
 # @react-pdf/textkit
 
+## 6.1.1
+
+### Patch Changes
+
+- Initial npm publish
+
 ## 6.1.0
 
 ### Minor Changes
