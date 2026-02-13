@@ -67,6 +67,12 @@ const splitNodesMultiColumn = (
       continue;
     }
 
+    // Overflowed all columns (e.g. nextPart from split in last column) → next page
+    if (colIndex >= columns) {
+      nextChildren.push(child);
+      continue;
+    }
+
     const nodeHeight = getNodeHeightAtWidth(child, colWidth, fontStore);
     const shouldBreak = shouldNodeBreak(
       child,

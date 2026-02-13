@@ -23,78 +23,57 @@ const styles = StyleSheet.create({
 const ViewColumns = () => (
   <Document>
     <Page size="A4" style={styles.body}>
-      <Text style={styles.title}>View Multi-Column Layout</Text>
       <View columns={2} columnGap={18}>
-        <View>
-          <Text style={styles.block}>
-            {LOREM} {LOREM}
-          </Text>
-        </View>
-        <View>
-          <Text style={styles.block}>
-            {LOREM} {LOREM}
-          </Text>
-        </View>
-        <View>
-          <Text style={styles.block}>
-            {LOREM} {LOREM}
-          </Text>
-        </View>
-        <View>
-          <Text style={styles.block}>
-            {LOREM} {LOREM}
-          </Text>
-        </View>{' '}
-        <View>
-          <Text style={styles.block}>
-            {LOREM} {LOREM}
-          </Text>
-        </View>
-        <View>
-          <Text style={styles.block}>
-            {LOREM} {LOREM}
-          </Text>
-        </View>{' '}
-        <View>
-          <Text style={styles.block}>
-            {LOREM} {LOREM}
-          </Text>
-        </View>
-        <View>
-          <Text style={styles.block}>
-            {LOREM} {LOREM}
-          </Text>
-        </View>{' '}
-        <View>
-          <Text style={styles.block}>
-            {LOREM} {LOREM}
-          </Text>
-        </View>
-        <View>
-          <Text style={styles.block}>
-            {LOREM} {LOREM}
-          </Text>
-        </View>
-        <View>
-          <Text style={styles.block}>
-            {LOREM} {LOREM}
-          </Text>
-        </View>
-        <View>
-          <Text style={styles.block}>
-            {LOREM} {LOREM}
-          </Text>
-        </View>
-        <View>
-          <Text style={styles.block}>
-            {LOREM} {LOREM}
-          </Text>
-        </View>
-        <View>
-          <Text style={styles.block}>
-            {LOREM} {LOREM}
-          </Text>
-        </View>
+        <Text style={styles.block}>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM}
+        </Text>
       </View>
     </Page>
   </Document>
