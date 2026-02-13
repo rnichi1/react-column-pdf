@@ -1,4 +1,7 @@
+import FontStore from '@react-pdf/font';
+
 import canNodeWrap from '../node/getWrap';
+import getNodeHeightAtWidth from '../node/getNodeHeightAtWidth';
 import isFixed from '../node/isFixed';
 import shouldNodeBreak from '../node/shouldBreak';
 import { SafeNode } from '../types';
@@ -26,18 +29,25 @@ const warnUnavailableSpace = (node: SafeNode) => {
  * Split nodes into columns and next page, using the same wrapping logic as pages.
  * Fills column 1 first, then column 2, etc., then overflows to next page.
  *
+ * Uses getNodeHeightAtWidth so distribution is based on height at column width,
+ * not the initial full-width layout height (which would underestimate).
+ *
  * @param height - Available height from parent (wrap area - parent top)
  * @param contentArea - Max height per column
  * @param columns - Number of columns
+ * @param colWidth - Width of each column (for accurate height measurement)
  * @param nodes - Children to distribute
  * @param splitFn - Function to split Text or View nodes
+ * @param fontStore - Font store for text layout when measuring
  */
 const splitNodesMultiColumn = (
   height: number,
   contentArea: number,
   columns: number,
+  colWidth: number,
   nodes: SafeNode[],
   splitFn: SplitFn,
+  fontStore: FontStore,
 ): SplitNodesMultiColumnResult => {
   const colChildren: SafeNode[][] = Array.from({ length: columns }, () => []);
   const nextChildren: SafeNode[] = [];
@@ -57,7 +67,7 @@ const splitNodesMultiColumn = (
       continue;
     }
 
-    const nodeHeight = child.box.height;
+    const nodeHeight = getNodeHeightAtWidth(child, colWidth, fontStore);
     const shouldBreak = shouldNodeBreak(
       child,
       futureNodes,

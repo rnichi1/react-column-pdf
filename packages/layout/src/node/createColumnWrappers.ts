@@ -57,6 +57,8 @@ const createColumnViews = (
       style: {
         ...omitFlexFromStyle(parent.style as Record<string, unknown>),
         width: colWidth,
+        minWidth: colWidth,
+        maxWidth: colWidth,
         flexDirection: 'column',
         flexShrink: 0,
       },
