@@ -74,12 +74,18 @@ const getFragments = (
   // Don't pass main background color to textkit. Will be rendered by the render package instead
   const backgroundColor = level === 0 ? null : instance.style.backgroundColor;
 
+  // Resolve unitless lineHeight to points (textkit expects absolute values)
+  const resolvedLineHeight =
+    typeof lineHeight === 'number' && lineHeight > 0 && lineHeight <= 5
+      ? fontSize * lineHeight
+      : lineHeight;
+
   const attributes = {
     font,
     color,
     opacity,
     fontSize,
-    lineHeight,
+    lineHeight: resolvedLineHeight,
     direction,
     verticalAlign,
     backgroundColor,

@@ -20,6 +20,9 @@ import svgTransform from './svg-transform';
 import transformOrigin from './transform-origin';
 import forms from './forms';
 import softHyphens from './soft-hyphens';
+import viewColumns from './view-columns';
+import viewColumnsMagazine from './view-columns-magazine';
+import viewColumnsBreak from './view-columns-break';
 
 const EXAMPLES = [
   duplicatedImages,
@@ -44,6 +47,9 @@ const EXAMPLES = [
   imageStressTest,
   forms,
   softHyphens,
+  viewColumns,
+  viewColumnsMagazine,
+  viewColumnsBreak,
 ];
 
 export default EXAMPLES;

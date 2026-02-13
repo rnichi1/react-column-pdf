@@ -120,6 +120,15 @@ declare namespace ReactPDF {
       pageNumber: number;
       subPageNumber: number;
     }) => React.ReactNode;
+    /**
+     * Number of columns for multi-column layout.
+     * When > 1, content flows to the next column before wrapping to the next page.
+     */
+    columns?: number;
+    /**
+     * Gap between columns in points. Only used when columns > 1.
+     */
+    columnGap?: number;
   }
 
   /**
@@ -188,6 +197,17 @@ declare namespace ReactPDF {
      * @see https://react-pdf.org/advanced#orphan-&-widow-protection
      */
     widows?: number;
+    /**
+     * Number of columns for multi-column text layout.
+     * When > 1, text flows to the next column before wrapping to the next page.
+     * @default 1
+     */
+    columns?: number;
+    /**
+     * Gap between columns in points. Only used when columns > 1.
+     * @default 18
+     */
+    columnGap?: number;
   }
 
   interface SVGTextProps extends SVGPresentationAttributes {

@@ -32,7 +32,22 @@ const getLineFragments = (rect: Rect, excludeRects: Rect[]) => {
 };
 
 const generateLineRects = (container: Container, height: number) => {
-  const { excludeRects, ...rect } = container;
+  const { excludeRects, columns, columnGap, ...rect } = container;
+
+  if (columns != null && columns > 1 && columnGap != null) {
+    const gap = columnGap * (columns - 1);
+    const colWidth = (rect.width - gap) / columns;
+    const lineRects: Rect[] = [];
+    for (let i = 0; i < columns; i += 1) {
+      lineRects.push({
+        x: rect.x + i * (colWidth + columnGap),
+        y: rect.y,
+        width: colWidth,
+        height: rect.height,
+      });
+    }
+    return lineRects;
+  }
 
   if (!excludeRects) return [rect];
 

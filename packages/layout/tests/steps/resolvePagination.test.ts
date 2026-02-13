@@ -459,4 +459,128 @@ describe('pagination step', () => {
 
     expect(subChapter3.props!.bookmark).toEqual(bookmarkSubChapter3);
   });
+
+  test('should distribute View children into columns when columns > 1', async () => {
+    const yoga = await loadYoga();
+
+    const layout = calcLayout({
+      type: 'DOCUMENT',
+      yoga,
+      props: {},
+      children: [
+        {
+          type: 'PAGE',
+          props: {},
+          style: {
+            width: 100,
+            height: 100,
+          },
+          children: [
+            {
+              type: 'VIEW',
+              props: { columns: 2, columnGap: 18 },
+              style: { width: 100 },
+              box: { top: 0, left: 0, width: 100, height: 60 },
+              children: [
+                {
+                  type: 'VIEW',
+                  style: { height: 30 },
+                  props: {},
+                  box: { top: 0, left: 0, width: 100, height: 30 },
+                  children: [],
+                },
+                {
+                  type: 'VIEW',
+                  style: { height: 30 },
+                  props: {},
+                  box: { top: 30, left: 0, width: 100, height: 30 },
+                  children: [],
+                },
+                {
+                  type: 'VIEW',
+                  style: { height: 30 },
+                  props: {},
+                  box: { top: 60, left: 0, width: 100, height: 30 },
+                  children: [],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    });
+
+    const page = layout.children[0];
+    const multiColView = page.children![0];
+
+    expect(multiColView.type).toBe('VIEW');
+    expect(multiColView.style?.flexDirection).toBe('row');
+    expect(multiColView.children!.length).toBeGreaterThanOrEqual(2);
+
+    const col1 = multiColView.children![0];
+    const col2 = multiColView.children![1];
+
+    expect(col1.type).toBe('VIEW');
+    expect(col2.type).toBe('VIEW');
+    expect(col1.style?.width).toBe(41);
+    expect(col2.style?.width).toBe(41);
+    expect(col1.children!.length + col2.children!.length).toBe(3);
+  });
+
+  test('should force wrapping to next column when child has break prop', async () => {
+    const yoga = await loadYoga();
+
+    const layout = calcLayout({
+      type: 'DOCUMENT',
+      yoga,
+      props: {},
+      children: [
+        {
+          type: 'PAGE',
+          props: {},
+          style: {
+            width: 100,
+            height: 120,
+          },
+          children: [
+            {
+              type: 'VIEW',
+              props: { columns: 2, columnGap: 18 },
+              style: { width: 100 },
+              children: [
+                {
+                  type: 'VIEW',
+                  style: { height: 20 },
+                  props: {},
+                  children: [],
+                },
+                {
+                  type: 'VIEW',
+                  style: { height: 20 },
+                  props: { break: true },
+                  children: [],
+                },
+                {
+                  type: 'VIEW',
+                  style: { height: 20 },
+                  props: {},
+                  children: [],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    });
+
+    const page = layout.children[0];
+    const multiColView = page.children![0];
+    const col1 = multiColView.children![0];
+    const col2 = multiColView.children![1];
+
+    expect(multiColView.children!.length).toBe(2);
+    expect(col1.children!.length).toBe(1);
+    expect(col2.children!.length).toBe(2);
+    expect((col2.children![0] as any).props.break).toBe(false);
+  });
 });
