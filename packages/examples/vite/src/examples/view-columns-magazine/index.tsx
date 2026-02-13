@@ -62,7 +62,7 @@ const ViewColumnsMagazine = () => (
           his article explores the future of digital publishing. {LOREM} {LOREM}{' '}
           {LOREM} {LOREM} {LOREM} {LOREM}
         </Text>
-        <Text style={styles.block}>
+        <Text style={styles.block} break>
           {LOREM} {LOREM} {LOREM} {LOREM}
           {LOREM} {LOREM} {LOREM} {LOREM}
         </Text>

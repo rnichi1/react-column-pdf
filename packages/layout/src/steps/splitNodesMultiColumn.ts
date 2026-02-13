@@ -8,7 +8,7 @@ import getNodeHeightAtWidth, {
 import isFixed from '../node/isFixed';
 import { SafeNode } from '../types';
 
-/** Only respect explicit break prop in column context; child.box.top is from full-width layout. */
+/** In column context, use break to force moving the node to the next column. */
 const getBreak = (node: SafeNode) =>
   'break' in node.props ? node.props.break : false;
 
@@ -95,18 +95,24 @@ const splitNodesMultiColumn = (
     const shouldBreak = getBreak(child);
 
     if (shouldBreak) {
-      const box = Object.assign({}, child.box, {
-        top: child.box.top - height,
-      });
       const next = Object.assign({}, child, {
-        box,
         props: {
           ...child.props,
           wrap: true,
           break: false,
         },
       });
+
+      // Move to next column if available and retry this same node there.
+      if (colIndex < columns - 1) {
+        colIndex += 1;
+        pending.unshift(next);
+        continue;
+      }
+
+      // Last column: overflow this node to next page.
       nextChildren.push(next);
+
       // Push remaining fixed nodes to current, then break
       for (const n of futureNodes) {
         if (isFixed(n)) {
@@ -114,6 +120,7 @@ const splitNodesMultiColumn = (
           nextChildren.push(n);
         }
       }
+
       // Preserve remaining nodes (mirror page-level splitNodes behavior)
       nextChildren.push(...pending);
       break;

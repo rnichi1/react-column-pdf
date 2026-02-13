@@ -14,6 +14,7 @@ import minPresenceAhead from './min-presence-ahead';
 import multilineText from './multiline-text';
 import objectFit from './object-fit';
 import pageWrap from './page-wrap';
+import pageWrapTwoColumns from './page-wrap-two-columns';
 import resume from './resume';
 import svg from './svg';
 import svgTransform from './svg-transform';
@@ -27,6 +28,7 @@ import viewColumnsImageTop from './view-columns-image-top';
 import viewColumnsImageBetween from './view-columns-image-between';
 import viewColumnsMagazine from './view-columns-magazine';
 import viewColumnsGapVariants from './view-columns-gap-variants';
+import viewColumnsBreak from './view-columns-break';
 
 const EXAMPLES = [
   duplicatedImages,
@@ -44,6 +46,7 @@ const EXAMPLES = [
   multilineText,
   objectFit,
   pageWrap,
+  pageWrapTwoColumns,
   resume,
   svg,
   svgTransform,
@@ -58,6 +61,7 @@ const EXAMPLES = [
   viewColumnsImageBetween,
   viewColumnsMagazine,
   viewColumnsGapVariants,
+  viewColumnsBreak,
 ];
 
 export default EXAMPLES;
