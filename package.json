@@ -8,7 +8,15 @@
   "type": "module",
   "repository": "git@github.com:rnichi1/react-column-pdf.git",
   "main": "./packages/renderer/lib/react-pdf.js",
+  "module": "./packages/renderer/lib/react-pdf.js",
   "types": "./packages/renderer/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./packages/renderer/lib/react-pdf.js",
+      "require": "./packages/renderer/lib/react-pdf.js",
+      "types": "./packages/renderer/index.d.ts"
+    }
+  },
   "browser": {
     "./packages/renderer/lib/react-pdf.js": "./packages/renderer/lib/react-pdf.browser.js"
   },
