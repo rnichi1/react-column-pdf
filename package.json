@@ -1,19 +1,24 @@
 {
   "private": true,
-  "name": "@react-pdf/root",
-  "version": "2.0.0",
+  "name": "react-column-pdf",
+  "version": "1.0.0",
   "license": "MIT",
-  "author": "Diego Muracciole <diegomuracciole@gmail.com>",
-  "homepage": "https://github.com/diegomura/react-pdf#readme",
+  "author": "rnichi1",
+  "homepage": "https://github.com/rnichi1/react-column-pdf#readme",
   "type": "module",
-  "repository": "git@github.com:diegomura/react-pdf.git",
+  "repository": "git@github.com:rnichi1/react-column-pdf.git",
+  "main": "./packages/renderer/lib/react-pdf.js",
+  "types": "./packages/renderer/index.d.ts",
+  "browser": {
+    "./packages/renderer/lib/react-pdf.js": "./packages/renderer/lib/react-pdf.browser.js"
+  },
   "workspaces": [
     "packages/*",
     "packages/examples/*",
     "e2e/*"
   ],
   "scripts": {
-    "prepare": "husky",
+    "prepare": "yarn build",
     "build": "lerna run build",
     "watch": "lerna run watch --parallel",
     "typecheck": "lerna run typecheck --parallel",

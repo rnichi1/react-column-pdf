@@ -2,7 +2,7 @@
   "name": "@react-pdf/textkit",
   "license": "MIT",
   "version": "6.1.0",
-  "description": "An advanced text layout framework",
+  "description": "Text layout with multi-column support for react-column-pdf",
   "type": "module",
   "main": "./lib/textkit.js",
   "types": "./lib/index.d.ts",
