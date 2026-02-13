@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "react-column-pdf",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "author": "rnichi1",
   "homepage": "https://github.com/rnichi1/react-column-pdf#readme",
@@ -36,7 +36,8 @@
     "dev": "lerna run dev --scope @react-pdf/examples --",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "changeset publish"
+    "release": "changeset publish",
+    "release:git": "node -e \"const {execSync}=require('child_process'); const v=require('./package.json').version; execSync('git tag v'+v); execSync('git push origin v'+v)\""
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",

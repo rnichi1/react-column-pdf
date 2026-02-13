@@ -11,10 +11,14 @@
 ## Install from GitHub
 
 ```sh
-yarn add rnichi1/react-column-pdf
-# or
-npm install rnichi1/react-column-pdf
+# Latest from main branch (run `yarn upgrade react-column-pdf` to pull updates)
+yarn add react-column-pdf@github:rnichi1/react-column-pdf#main
+
+# Pinned to a specific release
+yarn add react-column-pdf@github:rnichi1/react-column-pdf#v1.0.0
 ```
+
+When using `#main`, `yarn upgrade react-column-pdf` will fetch the latest without reinstalling the whole project.
 
 Compatible with [@react-pdf/renderer](https://github.com/diegomura/react-pdf) but adds `columns` and `columnGap` props to `View` and `Text` for multi-column layouts.
 
