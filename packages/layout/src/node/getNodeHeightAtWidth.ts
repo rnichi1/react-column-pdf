@@ -9,7 +9,7 @@ import { SafeNode, SafeTextNode } from '../types';
 
 const isText = (node: SafeNode): node is SafeTextNode => node.type === P.Text;
 
-const getSpacingHeight = (node: SafeNode): number => {
+export const getSpacingHeight = (node: SafeNode): number => {
   const { paddingTop, paddingBottom } = getPadding(node);
   const { marginTop, marginBottom } = getMargin(node);
   const { borderTopWidth, borderBottomWidth } = getBorderWidth(node);
@@ -43,9 +43,24 @@ const getNodeHeightAtWidth = (
   if (!node.box?.height) return 0;
 
   if (isText(node)) {
-    const lines = layoutText(node, colWidth, Infinity, fontStore);
-    const contentHeight = lines.reduce((acc, line) => acc + line.box.height, 0);
-    return contentHeight + getSpacingHeight(node);
+    const preserveLines = (node.props as { __preserveLines?: boolean })
+      ?.__preserveLines;
+    if (preserveLines && node.lines?.length) {
+      const contentHeight = (
+        node.lines as { box?: { height?: number } }[]
+      ).reduce((acc, line) => acc + (line?.box?.height ?? 0), 0);
+      return contentHeight + getSpacingHeight(node);
+    }
+    try {
+      const lines = layoutText(node, colWidth, Infinity, fontStore);
+      const contentHeight = (lines || []).reduce(
+        (acc, line) => acc + (line?.box?.height ?? 0),
+        0,
+      );
+      return contentHeight + getSpacingHeight(node);
+    } catch {
+      return node.box.height;
+    }
   }
 
   if (node.type === P.View && node.children?.length) {

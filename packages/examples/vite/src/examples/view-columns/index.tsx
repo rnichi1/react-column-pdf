@@ -18,15 +18,56 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     textAlign: 'justify',
   },
+  red: {
+    color: 'red',
+  },
+  blue: {
+    color: 'blue',
+  },
+  green: {
+    color: 'green',
+  },
+  yellow: {
+    color: 'yellow',
+  },
+  purple: {
+    color: 'purple',
+  },
 });
 
 const ViewColumns = () => (
   <Document>
     <Page size="A4" style={styles.body}>
+      <Text style={styles.title}>View Columns</Text>
+      <Text style={styles.title}>View Columns</Text>
+      <Text style={styles.title}>View Columns</Text>
       <View columns={2} columnGap={18}>
-        <Text style={styles.block}>
+        <Text style={styles.block} debug>
           {LOREM} {LOREM} {LOREM} {LOREM}
           {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block} debug>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block} debug>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block} debug>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block} debug>
           {LOREM} {LOREM} {LOREM} {LOREM}
         </Text>
         <Text style={styles.block}>
@@ -38,8 +79,6 @@ const ViewColumns = () => (
         </Text>
         <Text style={styles.block}>
           {LOREM} {LOREM} {LOREM} {LOREM}
-          {LOREM} {LOREM} {LOREM} {LOREM}
-          {LOREM} {LOREM} {LOREM} {LOREM}
         </Text>
         <Text style={styles.block}>
           {LOREM} {LOREM} {LOREM} {LOREM}
@@ -47,31 +86,23 @@ const ViewColumns = () => (
         <Text style={styles.block}>
           {LOREM} {LOREM} {LOREM} {LOREM}
         </Text>
-        <Text style={styles.block}>
-          {LOREM} {LOREM} {LOREM} {LOREM}
-        </Text>
-        <Text style={styles.block}>
-          {LOREM} {LOREM} {LOREM} {LOREM}
-        </Text>
-        <Text style={styles.block}>
-          {LOREM} {LOREM} {LOREM} {LOREM}
-        </Text>
-        <Text style={styles.block}>
-          {LOREM} {LOREM} {LOREM} {LOREM}
-        </Text>
-        <Text style={styles.block}>
+        <Text style={styles.block} debug>
           {LOREM} {LOREM}
         </Text>
-        <Text style={styles.block}>
+        <Text style={styles.block} debug>
           {LOREM} {LOREM}
         </Text>
-        <Text style={styles.block}>
+        <Text style={styles.block} debug>
           {LOREM} {LOREM}
         </Text>
-        <Text style={styles.block}>
+        <Text style={styles.block} debug>
           {LOREM} {LOREM}
         </Text>
-        <Text style={styles.block}>
+        <Text style={{ ...styles.block, ...styles.red }} debug>
+          {LOREM} {LOREM}
+          {LOREM} {LOREM}
+          {LOREM} {LOREM}
+          {LOREM} {LOREM}
           {LOREM} {LOREM}
         </Text>
       </View>

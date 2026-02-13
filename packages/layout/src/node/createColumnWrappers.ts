@@ -8,10 +8,17 @@ const isText = (node: SafeNode): node is SafeTextNode => node.type === P.Text;
  * Clear lines from Text nodes so they get relayout with the column width.
  * Text nodes retain their previous layout (full-width) unless we clear lines,
  * which forces the measure function to run layoutText again with the correct width.
+ *
+ * Skip clearing for split results (__preserveLines) - they already have correctly
+ * sliced lines from splitTextAtWidth; clearing would cause relayout of full text
+ * and freeze/overlap.
  */
 const clearTextLinesForRelayout = (nodes: SafeNode[]): SafeNode[] =>
   nodes.map((child) => {
-    if (isText(child)) {
+    if (
+      isText(child) &&
+      !(child.props as { __preserveLines?: boolean })?.__preserveLines
+    ) {
       return Object.assign({}, child, { lines: undefined });
     }
     if (child.children) {

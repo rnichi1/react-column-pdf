@@ -11,6 +11,7 @@ import splitNode from '../node/splitNode';
 import getContentArea from '../page/getContentArea';
 import getWrapArea from '../page/getWrapArea';
 import splitText from '../text/splitText';
+import splitTextAtWidth from '../text/splitTextAtWidth';
 import {
   DynamicPageProps,
   SafeDocumentNode,
@@ -151,16 +152,62 @@ const splitNodes = (
       continue;
     }
 
-    const childToPush =
-      isView(child) && ((child as SafeViewNode).props?.columns ?? 1) > 1
-        ? transformViewToColumns(
-            child as SafeViewNode,
-            height - nodeTop,
-            contentArea,
-            fontStore!,
-          )
-        : child;
-    currentChildren.push(childToPush);
+    if (
+      isView(child) &&
+      ((child as SafeViewNode).props?.columns ?? 1) > 1 &&
+      fontStore
+    ) {
+      const viewChild = child as SafeViewNode;
+      const columns = viewChild.props?.columns ?? 1;
+      const columnGap = viewChild.props?.columnGap ?? 18;
+      const parentWidth = viewChild.box?.width ?? 0;
+      const colWidth =
+        parentWidth > 0
+          ? (parentWidth - columnGap * (columns - 1)) / columns
+          : 0;
+      const splitFn = (ch: SafeNode, h: number, cArea: number) =>
+        split(ch, h, cArea, fontStore, colWidth) as [SafeNode, SafeNode];
+
+      const { colChildren, nextChildren: overflowChildren } =
+        splitNodesMultiColumn(
+          height - nodeTop,
+          contentArea,
+          columns,
+          colWidth,
+          viewChild.children || [],
+          splitFn,
+          fontStore,
+        );
+
+      if (overflowChildren.length > 0) {
+        const columnViews = createColumnViews(viewChild, colChildren, colWidth);
+        const currentViewWithCols = Object.assign({}, viewChild, {
+          style: {
+            ...viewChild.style,
+            flexDirection: 'row',
+            columnGap,
+          },
+          children: columnViews,
+        });
+        const nextViewWithOverflow = Object.assign({}, viewChild, {
+          children: overflowChildren,
+          box: { ...viewChild.box, top: 0 },
+        });
+        currentChildren.push(currentViewWithCols);
+        nextChildren.push(nextViewWithOverflow, ...futureNodes);
+        break;
+      }
+
+      const childToPush = transformViewToColumns(
+        viewChild,
+        height - nodeTop,
+        contentArea,
+        fontStore,
+      );
+      currentChildren.push(childToPush);
+    } else {
+      currentChildren.push(child);
+    }
   }
 
   return [currentChildren, nextChildren];
@@ -190,7 +237,7 @@ const transformViewToColumns = (
     parentWidth > 0 ? (parentWidth - columnGap * (columns - 1)) / columns : 0;
 
   const splitFn = (child: SafeNode, h: number, cArea: number) =>
-    split(child, h, cArea, fontStore) as [SafeNode, SafeNode];
+    split(child, h, cArea, fontStore, colWidth) as [SafeNode, SafeNode];
 
   const { colChildren } = splitNodesMultiColumn(
     availableHeight,
@@ -238,7 +285,7 @@ const splitView = (
       colWidth,
       node.children || [],
       (child, h, cArea) =>
-        split(child, h, cArea, fontStore) as [SafeNode, SafeNode],
+        split(child, h, cArea, fontStore, colWidth) as [SafeNode, SafeNode],
       fontStore,
     );
 
@@ -280,9 +327,12 @@ const split = (
   height: number,
   contentArea: number,
   fontStore?: FontStore,
+  colWidth?: number,
 ) =>
   isText(node)
-    ? splitText(node, height)
+    ? colWidth != null && fontStore
+      ? splitTextAtWidth(node, colWidth, height, fontStore)
+      : splitText(node, height)
     : splitView(node, height, contentArea, fontStore);
 
 const shouldResolveDynamicNodes = (node: SafeNode) => {

@@ -1,10 +1,15 @@
 import FontStore from '@react-pdf/font';
+import * as P from '@react-pdf/primitives';
 
 import canNodeWrap from '../node/getWrap';
-import getNodeHeightAtWidth from '../node/getNodeHeightAtWidth';
+import getNodeHeightAtWidth, {
+  getSpacingHeight,
+} from '../node/getNodeHeightAtWidth';
 import isFixed from '../node/isFixed';
 import shouldNodeBreak from '../node/shouldBreak';
 import { SafeNode } from '../types';
+
+const isText = (node: SafeNode) => node.type === P.Text;
 
 const SAFETY_THRESHOLD = 0.001;
 
@@ -77,7 +82,7 @@ const splitNodesMultiColumn = (
     const shouldBreak = shouldNodeBreak(
       child,
       futureNodes,
-      contentArea,
+      height,
       colChildren[colIndex],
     );
 
@@ -107,7 +112,7 @@ const splitNodesMultiColumn = (
     // Find a column with space
     let placed = false;
     for (let c = colIndex; c < columns && !placed; c++) {
-      const remaining = contentArea - colHeights[c];
+      const remaining = height - colHeights[c];
 
       if (nodeHeight <= remaining + SAFETY_THRESHOLD) {
         colChildren[c].push(child);
@@ -119,28 +124,31 @@ const splitNodesMultiColumn = (
 
       // Doesn't fit - try to split
       if (canNodeWrap(child)) {
-        const splitHeight = colHeights[c] + remaining;
+        // For Text: content space = remaining - node's margin/padding/border
+        const splitSpace = isText(child)
+          ? Math.max(0, remaining - getSpacingHeight(child))
+          : remaining;
+        const [currentPart, nextPart] = splitFn(child, splitSpace, height);
 
-        const [currentPart, nextPart] = splitFn(
-          child,
-          splitHeight,
-          contentArea,
-        );
-
-        // Current part might be empty (e.g. orphans/widows)
+        // Current part might be empty (orphans/widows or no lines fit in remaining)
+        // If empty, don't split - try next column with whole node to avoid infinite loop
         if (currentPart && currentPart.box.height > 0) {
           colChildren[c].push(currentPart);
-          colHeights[c] += currentPart.box.height;
+          colHeights[c] += getNodeHeightAtWidth(
+            currentPart,
+            colWidth,
+            fontStore,
+          );
           placed = true;
-        }
 
-        // Try to place next part in next column
-        if (nextPart && nextPart.box.height > 0) {
-          pending.unshift(nextPart);
-          colIndex = c + 1;
+          // Try to place next part in next column
+          if (nextPart && nextPart.box.height > 0) {
+            pending.unshift(nextPart);
+            colIndex = c + 1;
+          }
         }
-        placed = true;
-        break;
+        // else: currentPart empty (slicedLineIndex was 0) - fall through to try next column
+        if (placed) break;
       }
 
       // Can't wrap - try next column, or push to next page if all columns tried
