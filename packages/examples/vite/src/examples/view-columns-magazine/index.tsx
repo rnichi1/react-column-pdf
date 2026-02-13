@@ -31,13 +31,12 @@ const styles = StyleSheet.create({
     fontSize: 11,
     marginBottom: 12,
     textAlign: 'justify',
-    lineHeight: 1.5,
   },
   blockSmall: {
     fontSize: 9,
     marginBottom: 8,
     textAlign: 'justify',
-    lineHeight: 1.4,
+    lineHeight: 2,
   },
   subhead: {
     fontSize: 12,
@@ -74,6 +73,21 @@ const ViewColumnsMagazine = () => (
           {LOREM} {LOREM}
         </Text>
         <Text style={styles.blockSmall}>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.blockSmall}>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block} debug>
           {LOREM} {LOREM} {LOREM} {LOREM}
         </Text>
       </View>

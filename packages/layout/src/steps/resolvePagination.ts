@@ -498,6 +498,8 @@ const dissocSubPageData = (page) => {
   return omit(['subPageNumber', 'subPageTotalPages'], page);
 };
 
+const MAX_PAGES = 1000;
+
 const paginate = (
   page: SafePageNode,
   pageNumber: number,
@@ -514,6 +516,13 @@ const paginate = (
   let nextPage = splittedPage[1];
 
   while (nextPage !== null) {
+    if (pages.length >= MAX_PAGES) {
+      console.warn(
+        `resolvePagination: max pages limit (${MAX_PAGES}) reached, stopping pagination`,
+      );
+      break;
+    }
+
     splittedPage = splitPage(
       nextPage,
       pageNumber + pages.length,

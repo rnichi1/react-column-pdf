@@ -114,7 +114,11 @@ const splitTextAtWidth = (
   const widows = node.props?.widows ?? 2;
   const orphans = node.props?.orphans ?? 2;
 
-  const slicedLineIndex = getLineBreakForLines(lines, height, orphans, widows);
+  let slicedLineIndex = getLineBreakForLines(lines, height, orphans, widows);
+  // Force minimal split when first line doesn't fit - prevents infinite pagination
+  if (slicedLineIndex === 0 && lines.length > 0) {
+    slicedLineIndex = 1;
+  }
   const currentHeight = heightAtLineIndexForLines(lines, slicedLineIndex);
   const totalHeight = totalLinesHeight(lines);
   const nextHeight = totalHeight - currentHeight;
