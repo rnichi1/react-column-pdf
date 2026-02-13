@@ -26,11 +26,13 @@ const styles = StyleSheet.create({
   dropCap: {
     fontSize: 24,
     fontFamily: 'Helvetica-Bold',
+    lineHeight: 1.2,
   },
   block: {
     fontSize: 11,
     marginBottom: 12,
     textAlign: 'justify',
+    lineHeight: 1.5,
   },
   blockSmall: {
     fontSize: 9,
@@ -87,7 +89,7 @@ const ViewColumnsMagazine = () => (
         <Text style={styles.block}>
           {LOREM} {LOREM} {LOREM} {LOREM}
         </Text>
-        <Text style={styles.block} debug>
+        <Text style={styles.block}>
           {LOREM} {LOREM} {LOREM} {LOREM}
         </Text>
       </View>

@@ -52,6 +52,12 @@ const relayoutPage = compose(
   resolveTextLayout,
   resolvePageDimensions,
   resolveInheritance,
+);
+
+const relayoutDynamicPage = compose(
+  resolveTextLayout,
+  resolvePageDimensions,
+  resolveInheritance,
   resolvePageStyles,
 );
 
@@ -421,7 +427,7 @@ const resolveDynamicPage = (
 ) => {
   if (shouldResolveDynamicNodes(page)) {
     const resolvedPage = resolveDynamicNodes(props, page);
-    return relayoutPage(resolvedPage, fontStore, yoga);
+    return relayoutDynamicPage(resolvedPage, fontStore, yoga);
   }
 
   return page;
