@@ -41,58 +41,57 @@ const ViewColumns = () => (
       <Text style={styles.title}>View Columns</Text>
       <Text style={styles.title}>View Columns</Text>
       <Text style={styles.title}>View Columns</Text>
+      <Text style={styles.title}>View Columns</Text>
       <View columns={2} columnGap={18}>
-        <Text style={styles.block} debug>
-          {LOREM} {LOREM} {LOREM} {LOREM}
-          {LOREM} {LOREM} {LOREM} {LOREM}
-          {LOREM} {LOREM} {LOREM} {LOREM}
-          {LOREM} {LOREM} {LOREM} {LOREM}
-          {LOREM} {LOREM} {LOREM} {LOREM}
-          {LOREM} {LOREM} {LOREM} {LOREM}
-          {LOREM} {LOREM} {LOREM} {LOREM}
-        </Text>
-        <Text style={styles.block} debug>
+        <Text style={[styles.block, styles.red]} debug>
           {LOREM} {LOREM} {LOREM} {LOREM}
           {LOREM} {LOREM} {LOREM} {LOREM}
           {LOREM} {LOREM} {LOREM} {LOREM}
           {LOREM} {LOREM} {LOREM} {LOREM}
           {LOREM} {LOREM} {LOREM} {LOREM}
         </Text>
-        <Text style={styles.block} debug>
-          {LOREM} {LOREM} {LOREM} {LOREM}
-        </Text>
-        <Text style={styles.block} debug>
+        <Text style={[styles.block, styles.blue]} debug>
           {LOREM} {LOREM} {LOREM} {LOREM}
           {LOREM} {LOREM} {LOREM} {LOREM}
           {LOREM} {LOREM} {LOREM} {LOREM}
-          {LOREM} {LOREM} {LOREM} {LOREM}
-        </Text>
-        <Text style={styles.block} debug>
-          {LOREM} {LOREM} {LOREM} {LOREM}
-        </Text>
-        <Text style={styles.block}>
           {LOREM} {LOREM} {LOREM} {LOREM}
           {LOREM} {LOREM} {LOREM} {LOREM}
         </Text>
-        <Text style={styles.block}>
+        <Text style={[styles.block, styles.green]} debug>
           {LOREM} {LOREM} {LOREM} {LOREM}
         </Text>
-        <Text style={styles.block}>
+        <Text style={[styles.block, styles.yellow]} debug>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
           {LOREM} {LOREM} {LOREM} {LOREM}
         </Text>
-        <Text style={styles.block}>
+        <Text style={[styles.block, styles.purple]} debug>
           {LOREM} {LOREM} {LOREM} {LOREM}
         </Text>
-        <Text style={styles.block}>
+        <Text style={[styles.block, styles.red]} debug>
+          {LOREM} {LOREM} {LOREM} {LOREM}
           {LOREM} {LOREM} {LOREM} {LOREM}
         </Text>
-        <Text style={styles.block} debug>
+        <Text style={[styles.block, styles.blue]} debug>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={[styles.block, styles.green]} debug>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={[styles.block, styles.yellow]} debug>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={[styles.block, styles.purple]} debug>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={[styles.block, styles.red]} debug>
           {LOREM} {LOREM}
         </Text>
-        <Text style={styles.block} debug>
+        <Text style={styles.block}>
           {LOREM} {LOREM}
         </Text>
-        <Text style={styles.block} debug>
+        <Text style={[styles.block]} debug>
           {LOREM} {LOREM}
         </Text>
         <Text style={styles.block} debug>

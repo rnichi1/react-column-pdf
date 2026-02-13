@@ -106,6 +106,8 @@ const splitNodesMultiColumn = (
           nextChildren.push(n);
         }
       }
+      // Preserve remaining nodes (mirror page-level splitNodes behavior)
+      nextChildren.push(...pending);
       break;
     }
 
