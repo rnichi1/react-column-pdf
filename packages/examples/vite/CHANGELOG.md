@@ -1,5 +1,12 @@
 # @react-pdf/examples
 
+## 3.3.22
+
+### Patch Changes
+
+- Updated dependencies [[`7fd832b8`](https://github.com/rnichi1/react-column-pdf/commit/7fd832b8bf733f6dd1cc407f2a0b1559bbeccb16)]:
+  - react-column-pdf@4.3.4
+
 ## 3.3.22-rnichi.0
 
 ### Patch Changes
