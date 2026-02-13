@@ -1,10 +1,10 @@
 {
-  "name": "@react-pdf/renderer",
+  "name": "react-column-pdf",
   "version": "4.3.2",
   "license": "MIT",
-  "description": "Create PDF files on the browser and server",
-  "author": "Diego Muracciole <diegomuracciole@gmail.com>",
-  "homepage": "https://github.com/diegomura/react-pdf#readme",
+  "description": "React PDF renderer with multi-column layout support",
+  "author": "rnichi1",
+  "homepage": "https://github.com/rnichi1/react-column-pdf#readme",
   "type": "module",
   "main": "./lib/react-pdf.js",
   "browser": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/diegomura/react-pdf.git",
+    "url": "https://github.com/rnichi1/react-column-pdf.git",
     "directory": "packages/renderer"
   },
   "scripts": {
@@ -26,7 +26,7 @@
     "@babel/runtime": "^7.20.13",
     "@react-pdf/fns": "3.1.2",
     "@react-pdf/font": "^4.0.4",
-    "@react-pdf/layout": "^4.4.2",
+    "@rnich1/react-column-pdf-layout": "4.4.2",
     "@react-pdf/pdfkit": "^4.1.0",
     "@react-pdf/primitives": "^4.1.1",
     "@react-pdf/reconciler": "^2.0.0",
@@ -50,11 +50,6 @@
     "lib",
     "index.d.ts"
   ],
-  "collective": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/react-pdf",
-    "logo": "https://opencollective.com/opencollective/logo.txt"
-  },
   "devDependencies": {
     "@size-limit/preset-big-lib": "^11.0.1",
     "assert": "^2.0.0",

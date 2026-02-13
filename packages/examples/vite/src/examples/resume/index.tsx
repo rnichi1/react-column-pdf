@@ -7,7 +7,7 @@ import {
   Image,
   Document,
   StyleSheet,
-} from '@react-pdf/renderer';
+} from 'react-column-pdf';
 
 import Header from './Header';
 import Skills from './Skills';

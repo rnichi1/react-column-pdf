@@ -1,16 +1,18 @@
 {
-  "name": "@react-pdf/textkit",
+  "name": "@rnich1/react-column-pdf-textkit",
   "license": "MIT",
   "version": "6.1.0",
-  "description": "An advanced text layout framework",
+  "description": "Text layout with multi-column support for react-column-pdf",
   "type": "module",
   "main": "./lib/textkit.js",
   "types": "./lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/diegomura/react-pdf.git",
+    "url": "https://github.com/rnichi1/react-column-pdf.git",
     "directory": "packages/textkit"
   },
+  "homepage": "https://github.com/rnichi1/react-column-pdf#readme",
+  "author": "rnichi1",
   "contributors": [
     "Devon Govett <devongovett@gmail.com>",
     "Diego Muracciole <diegomuracciole@gmail.com>"

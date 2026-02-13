@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Svg, G, Path } from '@react-pdf/renderer';
+import { Svg, G, Path } from 'react-column-pdf';
 
 const Heart = () => (
   <Svg viewBox="-40 0 150 100">

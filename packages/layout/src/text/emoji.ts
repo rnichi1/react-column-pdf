@@ -2,7 +2,7 @@
 
 import emojiRegex from 'emoji-regex-xs';
 import resolveImage from '@react-pdf/image';
-import { Fragment } from '@react-pdf/textkit';
+import { Fragment } from '@rnich1/react-column-pdf-textkit';
 
 import { EmojiSource } from '../../../types';
 

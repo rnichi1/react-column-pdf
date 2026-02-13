@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Text, View, StyleSheet } from '@react-pdf/renderer';
+import { Link, Text, View, StyleSheet } from 'react-column-pdf';
 
 const styles = StyleSheet.create({
   container: {

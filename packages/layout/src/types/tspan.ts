@@ -1,6 +1,6 @@
 import * as P from '@react-pdf/primitives';
 import { SafeStyle, Style } from '@react-pdf/stylesheet';
-import { Paragraph } from '@react-pdf/textkit';
+import { Paragraph } from '@rnich1/react-column-pdf-textkit';
 
 import {
   SVGPresentationAttributes,

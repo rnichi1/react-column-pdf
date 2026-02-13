@@ -1,5 +1,5 @@
 import React from 'react';
-import { Document, Page, Svg, G, Rect } from '@react-pdf/renderer';
+import { Document, Page, Svg, G, Rect } from 'react-column-pdf';
 
 const COLORS = ['red', 'green', 'blue', 'yellow', 'purple'];
 

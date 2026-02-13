@@ -1,7 +1,7 @@
 import FontStore from '@react-pdf/font';
 import renderPDF from '@react-pdf/render';
 import PDFDocument from '@react-pdf/pdfkit';
-import layoutDocument from '@react-pdf/layout';
+import layoutDocument from '@rnich1/react-column-pdf-layout';
 import { upperFirst } from '@react-pdf/fns';
 
 import { omitNils } from './utils';

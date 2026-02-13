@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Document,
-  Page,
-  View,
-  Text,
-  Font,
-  StyleSheet,
-} from '@react-pdf/renderer';
+import { Document, Page, View, Text, Font, StyleSheet } from 'react-column-pdf';
 
 const styles = StyleSheet.create({
   container: {

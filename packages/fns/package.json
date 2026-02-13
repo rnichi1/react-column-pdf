@@ -1,5 +1,6 @@
 {
   "name": "@react-pdf/fns",
+  "private": true,
   "version": "3.1.2",
   "license": "MIT",
   "description": "React-pdf helper functions",

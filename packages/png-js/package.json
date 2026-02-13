@@ -1,5 +1,6 @@
 {
   "name": "@react-pdf/png-js",
+  "private": true,
   "description": "A PNG decoder in JS",
   "version": "3.0.0",
   "license": "MIT",

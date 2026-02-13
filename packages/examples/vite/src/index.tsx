@@ -2,7 +2,7 @@ import './index.css';
 
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { PDFViewer } from '@react-pdf/renderer';
+import { PDFViewer } from 'react-column-pdf';
 
 import EXAMPLES from './examples';
 

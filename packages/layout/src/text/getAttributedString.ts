@@ -1,5 +1,5 @@
 import * as P from '@react-pdf/primitives';
-import { Fragment, fromFragments } from '@react-pdf/textkit';
+import { Fragment, fromFragments } from '@rnich1/react-column-pdf-textkit';
 import FontStore from '@react-pdf/font';
 
 import { embedEmojis } from './emoji';

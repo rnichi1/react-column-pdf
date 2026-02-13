@@ -1,5 +1,5 @@
 import React from 'react';
-import { Document, Page, Font, Text, StyleSheet } from '@react-pdf/renderer';
+import { Document, Page, Font, Text, StyleSheet } from 'react-column-pdf';
 
 const shy = '\u00ad';
 

@@ -6,7 +6,7 @@ import {
   Page,
   Image,
   StyleSheet,
-} from '@react-pdf/renderer';
+} from 'react-column-pdf';
 
 import Quijote1 from '../../../public/quijote1.jpg';
 import Quijote2 from '../../../public/quijote2.png';

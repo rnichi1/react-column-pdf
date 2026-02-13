@@ -1,16 +1,16 @@
 {
-  "name": "@react-pdf/layout",
+  "name": "@rnich1/react-column-pdf-layout",
   "version": "4.4.2",
   "license": "MIT",
-  "description": "Resolve document component's layout",
-  "author": "Diego Muracciole <diegomuracciole@gmail.com>",
-  "homepage": "https://github.com/diegomura/react-pdf#readme",
+  "description": "Multi-column layout engine for react-column-pdf",
+  "author": "rnichi1",
+  "homepage": "https://github.com/rnichi1/react-column-pdf#readme",
   "type": "module",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/diegomura/react-pdf.git",
+    "url": "https://github.com/rnichi1/react-column-pdf.git",
     "directory": "packages/layout"
   },
   "scripts": {
@@ -24,7 +24,7 @@
     "@react-pdf/image": "^3.0.4",
     "@react-pdf/primitives": "^4.1.1",
     "@react-pdf/stylesheet": "^6.1.2",
-    "@react-pdf/textkit": "^6.1.0",
+    "@rnich1/react-column-pdf-textkit": "6.1.0",
     "@react-pdf/types": "^2.9.2",
     "emoji-regex-xs": "^1.0.0",
     "queue": "^6.0.1",

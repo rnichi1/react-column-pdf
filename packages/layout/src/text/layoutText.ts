@@ -7,7 +7,7 @@ import layoutEngine, {
   scriptItemizer,
   textDecoration,
   wordHyphenation,
-} from '@react-pdf/textkit';
+} from '@rnich1/react-column-pdf-textkit';
 
 import { SafeTextNode } from '../types';
 import getAttributedString from './getAttributedString';

@@ -1,5 +1,6 @@
 {
   "name": "@react-pdf/render",
+  "private": true,
   "version": "4.3.2",
   "license": "MIT",
   "description": "A render engine for Node and the browser",

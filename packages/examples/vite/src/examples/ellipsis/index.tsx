@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Document,
-  Page,
-  Text,
-  View,
-  StyleSheet,
-  Font,
-} from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet, Font } from 'react-column-pdf';
 
 import RobotoFont from '../../../public/Roboto-Regular.ttf';
 

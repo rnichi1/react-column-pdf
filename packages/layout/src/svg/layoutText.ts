@@ -10,7 +10,7 @@ import layoutEngine, {
   textDecoration,
   fromFragments,
   Fragment,
-} from '@react-pdf/textkit';
+} from '@rnich1/react-column-pdf-textkit';
 
 import transformText from '../text/transformText';
 import {

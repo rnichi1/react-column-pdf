@@ -6,7 +6,7 @@ import {
   Image,
   Text,
   StyleSheet,
-} from '@react-pdf/renderer';
+} from 'react-column-pdf';
 
 const styles = StyleSheet.create({
   image: {
