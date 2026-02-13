@@ -9,6 +9,7 @@ import isFixed from '../node/isFixed';
 import shouldNodeBreak from '../node/shouldBreak';
 import splitNode from '../node/splitNode';
 import getContentArea from '../page/getContentArea';
+import getContentWidth from '../page/getContentWidth';
 import getWrapArea from '../page/getWrapArea';
 import splitText from '../text/splitText';
 import splitTextAtWidth from '../text/splitTextAtWidth';
@@ -65,6 +66,7 @@ const splitNodes = (
   contentArea: number,
   nodes: SafeNode[],
   fontStore?: FontStore,
+  containerWidth?: number,
 ) => {
   const currentChildren: SafeNode[] = [];
   const nextChildren: SafeNode[] = [];
@@ -126,6 +128,8 @@ const splitNodes = (
         height,
         contentArea,
         fontStore,
+        undefined,
+        containerWidth,
       );
 
       // All children are moved to the next page, it doesn't make sense to show the parent on the current page
@@ -161,12 +165,24 @@ const splitNodes = (
       const columns = viewChild.props?.columns ?? 1;
       const columnGap = viewChild.props?.columnGap ?? 18;
       const parentWidth = viewChild.box?.width ?? 0;
+      const fallbackWidth = (containerWidth ?? 0) > 0 ? containerWidth! : 0;
+      const effectiveWidth = parentWidth > 0 ? parentWidth : fallbackWidth;
       const colWidth =
-        parentWidth > 0
-          ? (parentWidth - columnGap * (columns - 1)) / columns
+        effectiveWidth > 0
+          ? (effectiveWidth - columnGap * (columns - 1)) / columns
           : 0;
+
+      // Guard against zero colWidth - layoutText at width 0 causes hang
+      if (colWidth <= 0) {
+        currentChildren.push(child);
+        continue;
+      }
+
       const splitFn = (ch: SafeNode, h: number, cArea: number) =>
-        split(ch, h, cArea, fontStore, colWidth) as [SafeNode, SafeNode];
+        split(ch, h, cArea, fontStore, colWidth, colWidth) as [
+          SafeNode,
+          SafeNode,
+        ];
 
       const { colChildren, nextChildren: overflowChildren } =
         splitNodesMultiColumn(
@@ -204,6 +220,7 @@ const splitNodes = (
         height - nodeTop,
         contentArea,
         fontStore,
+        containerWidth,
       );
       currentChildren.push(childToPush);
     } else {
@@ -230,15 +247,27 @@ const transformViewToColumns = (
   availableHeight: number,
   contentArea: number,
   fontStore: FontStore,
+  containerWidth?: number,
 ): SafeNode => {
   const columns = node.props?.columns ?? 1;
   const columnGap = node.props?.columnGap ?? 18;
   const parentWidth = node.box?.width ?? 0;
+  const fallbackWidth = (containerWidth ?? 0) > 0 ? containerWidth! : 0;
+  const effectiveWidth = parentWidth > 0 ? parentWidth : fallbackWidth;
   const colWidth =
-    parentWidth > 0 ? (parentWidth - columnGap * (columns - 1)) / columns : 0;
+    effectiveWidth > 0
+      ? (effectiveWidth - columnGap * (columns - 1)) / columns
+      : 0;
+
+  if (colWidth <= 0) {
+    return node;
+  }
 
   const splitFn = (child: SafeNode, h: number, cArea: number) =>
-    split(child, h, cArea, fontStore, colWidth) as [SafeNode, SafeNode];
+    split(child, h, cArea, fontStore, colWidth, colWidth) as [
+      SafeNode,
+      SafeNode,
+    ];
 
   const { colChildren } = splitNodesMultiColumn(
     availableHeight,
@@ -268,6 +297,7 @@ const splitView = (
   height: number,
   contentArea: number,
   fontStore?: FontStore,
+  containerWidth?: number,
 ) => {
   const [currentNode, nextNode] = splitNode(node, height);
 
@@ -277,39 +307,48 @@ const splitView = (
   if (isView(node) && columns > 1 && fontStore) {
     const availableHeight = height - getTop(node);
     const parentWidth = node.box?.width ?? 0;
+    const fallbackWidth = (containerWidth ?? 0) > 0 ? containerWidth! : 0;
+    const effectiveWidth = parentWidth > 0 ? parentWidth : fallbackWidth;
     const colWidth =
-      parentWidth > 0 ? (parentWidth - columnGap * (columns - 1)) / columns : 0;
+      effectiveWidth > 0
+        ? (effectiveWidth - columnGap * (columns - 1)) / columns
+        : 0;
 
-    const { colChildren, nextChildren } = splitNodesMultiColumn(
-      availableHeight,
-      contentArea,
-      columns,
-      colWidth,
-      node.children || [],
-      (child, h, cArea) =>
-        split(child, h, cArea, fontStore, colWidth) as [SafeNode, SafeNode],
-      fontStore,
-    );
+    if (colWidth > 0) {
+      const { colChildren, nextChildren } = splitNodesMultiColumn(
+        availableHeight,
+        contentArea,
+        columns,
+        colWidth,
+        node.children || [],
+        (child, h, cArea) =>
+          split(child, h, cArea, fontStore, colWidth, colWidth) as [
+            SafeNode,
+            SafeNode,
+          ],
+        fontStore,
+      );
 
-    const columnViews = createColumnViews(
-      node as SafeViewNode,
-      colChildren,
-      colWidth,
-    );
+      const columnViews = createColumnViews(
+        node as SafeViewNode,
+        colChildren,
+        colWidth,
+      );
 
-    const currentViewWithRow = Object.assign({}, currentNode, {
-      style: {
-        ...currentNode.style,
-        flexDirection: 'row',
-        columnGap,
-        alignItems: 'flex-start',
-      },
-    });
+      const currentViewWithRow = Object.assign({}, currentNode, {
+        style: {
+          ...currentNode.style,
+          flexDirection: 'row',
+          columnGap,
+          alignItems: 'flex-start',
+        },
+      });
 
-    return [
-      assingChildren(columnViews, currentViewWithRow),
-      assingChildren(nextChildren, nextNode),
-    ];
+      return [
+        assingChildren(columnViews, currentViewWithRow),
+        assingChildren(nextChildren, nextNode),
+      ];
+    }
   }
 
   const [currentChilds, nextChildren] = splitChildren(
@@ -331,12 +370,13 @@ const split = (
   contentArea: number,
   fontStore?: FontStore,
   colWidth?: number,
+  containerWidth?: number,
 ) =>
   isText(node)
     ? colWidth != null && fontStore
       ? splitTextAtWidth(node, colWidth, height, fontStore)
       : splitText(node, height)
-    : splitView(node, height, contentArea, fontStore);
+    : splitView(node, height, contentArea, fontStore, containerWidth);
 
 const shouldResolveDynamicNodes = (node: SafeNode) => {
   const children = node.children || [];
@@ -395,6 +435,7 @@ const splitPage = (
 ): SafePageNode[] => {
   const wrapArea = getWrapArea(page);
   const contentArea = getContentArea(page);
+  const containerWidth = getContentWidth(page);
   const dynamicPage = resolveDynamicPage({ pageNumber }, page, fontStore, yoga);
   const height = page.style.height;
 
@@ -403,6 +444,7 @@ const splitPage = (
     contentArea,
     dynamicPage.children,
     fontStore,
+    containerWidth,
   );
 
   const relayout = (node: SafePageNode): SafePageNode =>

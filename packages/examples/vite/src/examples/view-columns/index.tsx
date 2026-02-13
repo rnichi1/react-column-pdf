@@ -24,7 +24,7 @@ const ViewColumns = () => (
   <Document>
     <Page size="A4" style={styles.body}>
       <Text style={styles.title}>Two-Column Layout</Text>
-      <View columns={2} columnGap={18}>
+      <View columns={3} columnGap={18}>
         <Text style={styles.block}>
           {LOREM} {LOREM} {LOREM} {LOREM}
           {LOREM} {LOREM} {LOREM} {LOREM}

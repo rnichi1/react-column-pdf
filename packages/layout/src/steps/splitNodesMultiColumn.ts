@@ -63,8 +63,18 @@ const splitNodesMultiColumn = (
 
   let colIndex = 0;
   const pending: SafeNode[] = [...nodes];
+  const maxIterations = Math.max(100, nodes.length * columns * 4);
+  let iterations = 0;
 
   while (pending.length > 0) {
+    iterations += 1;
+    if (iterations > maxIterations) {
+      console.warn(
+        'splitNodesMultiColumn: iteration limit reached, pushing remaining to next page',
+      );
+      nextChildren.push(...pending);
+      break;
+    }
     const child = pending.shift()!;
     const futureNodes = pending;
 

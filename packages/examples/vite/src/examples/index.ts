@@ -22,6 +22,11 @@ import forms from './forms';
 import softHyphens from './soft-hyphens';
 import twoColumns from './two-columns';
 import viewColumns from './view-columns';
+import viewColumnsThree from './view-columns-three';
+import viewColumnsImageTop from './view-columns-image-top';
+import viewColumnsImageBetween from './view-columns-image-between';
+import viewColumnsMagazine from './view-columns-magazine';
+import viewColumnsGapVariants from './view-columns-gap-variants';
 
 const EXAMPLES = [
   duplicatedImages,
@@ -48,6 +53,11 @@ const EXAMPLES = [
   softHyphens,
   twoColumns,
   viewColumns,
+  viewColumnsThree,
+  viewColumnsImageTop,
+  viewColumnsImageBetween,
+  viewColumnsMagazine,
+  viewColumnsGapVariants,
 ];
 
 export default EXAMPLES;

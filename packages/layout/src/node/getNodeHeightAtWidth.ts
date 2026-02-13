@@ -40,8 +40,7 @@ const getNodeHeightAtWidth = (
   colWidth: number,
   fontStore: FontStore,
 ): number => {
-  if (!node.box?.height) return 0;
-
+  // Text and View with children can be measured without box (before Yoga layout)
   if (isText(node)) {
     const preserveLines = (node.props as { __preserveLines?: boolean })
       ?.__preserveLines;
@@ -59,7 +58,7 @@ const getNodeHeightAtWidth = (
       );
       return contentHeight + getSpacingHeight(node);
     } catch {
-      return node.box.height;
+      return node.box?.height ?? 0;
     }
   }
 
@@ -85,6 +84,8 @@ const getNodeHeightAtWidth = (
     );
   }
 
+  // For Image, Svg, etc. we need box from Yoga
+  if (!node.box?.height) return 0;
   return node.box.height;
 };
 

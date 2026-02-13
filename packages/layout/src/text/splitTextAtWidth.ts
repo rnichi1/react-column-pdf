@@ -82,17 +82,26 @@ const splitTextAtWidth = (
   height: number,
   fontStore: FontStore,
 ): [SafeTextNode, SafeTextNode] => {
-  let rawLines: unknown;
-  try {
-    rawLines = layoutText(node, colWidth, Infinity, fontStore);
-  } catch {
-    const empty: SafeTextNode = Object.assign({}, node, {
-      box: { ...node.box, height: 0 },
-      lines: [],
-    });
-    return [empty, empty];
+  const preserveLines = (node.props as { __preserveLines?: boolean })
+    ?.__preserveLines;
+  const existingLines = node.lines as LineWithBox[] | undefined;
+
+  let lines: LineWithBox[];
+  if (preserveLines && existingLines?.length) {
+    lines = existingLines;
+  } else {
+    let rawLines: unknown;
+    try {
+      rawLines = layoutText(node, colWidth, Infinity, fontStore);
+    } catch {
+      const empty: SafeTextNode = Object.assign({}, node, {
+        box: { ...node.box, height: 0 },
+        lines: [],
+      });
+      return [empty, empty];
+    }
+    lines = Array.isArray(rawLines) ? (rawLines as LineWithBox[]) : [];
   }
-  const lines = Array.isArray(rawLines) ? (rawLines as LineWithBox[]) : [];
 
   if (!lines.length) {
     const empty: SafeTextNode = Object.assign({}, node, {
