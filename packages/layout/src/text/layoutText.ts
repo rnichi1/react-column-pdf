@@ -1,16 +1,16 @@
+import FontStore from '@react-pdf/font';
 import layoutEngine, {
   bidi,
-  linebreaker,
-  justification,
-  scriptItemizer,
-  wordHyphenation,
-  textDecoration,
   fontSubstitution,
+  justification,
+  linebreaker,
+  scriptItemizer,
+  textDecoration,
+  wordHyphenation,
 } from '@react-pdf/textkit';
-import FontStore from '@react-pdf/font';
 
-import getAttributedString from './getAttributedString';
 import { SafeTextNode } from '../types';
+import getAttributedString from './getAttributedString';
 
 const engines = {
   bidi,

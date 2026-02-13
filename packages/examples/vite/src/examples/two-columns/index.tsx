@@ -1,4 +1,4 @@
-import { Document, Page, StyleSheet, Text } from '@react-pdf/renderer';
+import { Document, Page, StyleSheet, Text, View } from '@react-pdf/renderer';
 import React from 'react';
 
 const LOREM =
@@ -7,7 +7,9 @@ const LOREM =
 const styles = StyleSheet.create({
   body: {
     padding: 40,
-    maxHeight: 300,
+  },
+  container: {
+    height: '100%',
   },
   title: {
     fontSize: 18,
@@ -28,11 +30,13 @@ const styles = StyleSheet.create({
 const TwoColumns = () => (
   <Document>
     <Page size="A4" style={styles.body}>
-      <Text style={styles.twoColumn} columns={2} columnGap={18}>
-        {LOREM} {LOREM} {LOREM} {LOREM} {LOREM} {LOREM} {LOREM} {LOREM} {LOREM}{' '}
-        {LOREM} {LOREM} {LOREM} {LOREM} {LOREM} {LOREM} {LOREM} {LOREM} {LOREM}{' '}
-        {LOREM} {LOREM} {LOREM}
-      </Text>
+      <View style={styles.container} break={true}>
+        <Text style={styles.twoColumn} columns={2} columnGap={18}>
+          {LOREM} {LOREM} {LOREM} {LOREM} {LOREM} {LOREM} {LOREM} {LOREM}{' '}
+          {LOREM} {LOREM} {LOREM} {LOREM} {LOREM} {LOREM} {LOREM} {LOREM}{' '}
+          {LOREM} {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+      </View>
     </Page>
   </Document>
 );

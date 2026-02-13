@@ -21,6 +21,7 @@ import transformOrigin from './transform-origin';
 import forms from './forms';
 import softHyphens from './soft-hyphens';
 import twoColumns from './two-columns';
+import viewColumns from './view-columns';
 
 const EXAMPLES = [
   duplicatedImages,
@@ -46,6 +47,7 @@ const EXAMPLES = [
   forms,
   softHyphens,
   twoColumns,
+  viewColumns,
 ];
 
 export default EXAMPLES;

@@ -1,19 +1,16 @@
-import * as P from '@react-pdf/primitives';
-import { omit, compose } from '@react-pdf/fns';
+import { compose, omit } from '@react-pdf/fns';
 import FontStore from '@react-pdf/font';
+import * as P from '@react-pdf/primitives';
 
-import isFixed from '../node/isFixed';
-import splitText from '../text/splitText';
-import splitNode from '../node/splitNode';
-import canNodeWrap from '../node/getWrap';
-import getWrapArea from '../page/getWrapArea';
-import getContentArea from '../page/getContentArea';
+import createColumnViews from '../node/createColumnWrappers';
 import createInstances from '../node/createInstances';
+import canNodeWrap from '../node/getWrap';
+import isFixed from '../node/isFixed';
 import shouldNodeBreak from '../node/shouldBreak';
-import resolveTextLayout from './resolveTextLayout';
-import resolveInheritance from './resolveInheritance';
-import { resolvePageDimensions } from './resolveDimensions';
-import { resolvePageStyles } from './resolveStyles';
+import splitNode from '../node/splitNode';
+import getContentArea from '../page/getContentArea';
+import getWrapArea from '../page/getWrapArea';
+import splitText from '../text/splitText';
 import {
   DynamicPageProps,
   SafeDocumentNode,
@@ -24,8 +21,15 @@ import {
   SafeViewNode,
   YogaInstance,
 } from '../types';
+import { resolvePageDimensions } from './resolveDimensions';
+import resolveInheritance from './resolveInheritance';
+import { resolvePageStyles } from './resolveStyles';
+import resolveTextLayout from './resolveTextLayout';
+import splitNodesMultiColumn from './splitNodesMultiColumn';
 
 const isText = (node: SafeNode): node is SafeTextNode => node.type === P.Text;
+
+const isView = (node: SafeNode): node is SafeViewNode => node.type === P.View;
 
 // Prevent splitting elements by low decimal numbers
 const SAFETY_THRESHOLD = 0.001;
@@ -137,7 +141,15 @@ const splitNodes = (height: number, contentArea: number, nodes: SafeNode[]) => {
       continue;
     }
 
-    currentChildren.push(child);
+    const childToPush =
+      isView(child) && ((child as SafeViewNode).props?.columns ?? 1) > 1
+        ? transformViewToColumns(
+            child as SafeViewNode,
+            height - nodeTop,
+            contentArea,
+          )
+        : child;
+    currentChildren.push(childToPush);
   }
 
   return [currentChildren, nextChildren];
@@ -149,8 +161,80 @@ const splitChildren = (height: number, contentArea: number, node: SafeNode) => {
   return splitNodes(availableHeight, contentArea, children);
 };
 
+const transformViewToColumns = (
+  node: SafeViewNode,
+  availableHeight: number,
+  contentArea: number,
+): SafeNode => {
+  const columns = node.props?.columns ?? 1;
+  const columnGap = node.props?.columnGap ?? 18;
+  const parentWidth = node.box?.width ?? 0;
+  const colWidth =
+    parentWidth > 0 ? (parentWidth - columnGap * (columns - 1)) / columns : 0;
+
+  const splitFn = (child: SafeNode, h: number, cArea: number) =>
+    split(child, h, cArea) as [SafeNode, SafeNode];
+
+  const { colChildren } = splitNodesMultiColumn(
+    availableHeight,
+    contentArea,
+    columns,
+    node.children || [],
+    splitFn,
+  );
+
+  const columnViews = createColumnViews(node, colChildren, colWidth);
+
+  return Object.assign({}, node, {
+    style: {
+      ...node.style,
+      flexDirection: 'row',
+      columnGap,
+    },
+    children: columnViews,
+  });
+};
+
 const splitView = (node: SafeNode, height: number, contentArea: number) => {
   const [currentNode, nextNode] = splitNode(node, height);
+
+  const columns = (node as SafeViewNode).props?.columns ?? 1;
+  const columnGap = (node as SafeViewNode).props?.columnGap ?? 18;
+
+  if (isView(node) && columns > 1) {
+    const availableHeight = height - getTop(node);
+    const parentWidth = node.box?.width ?? 0;
+    const colWidth =
+      parentWidth > 0 ? (parentWidth - columnGap * (columns - 1)) / columns : 0;
+
+    const { colChildren, nextChildren } = splitNodesMultiColumn(
+      availableHeight,
+      contentArea,
+      columns,
+      node.children || [],
+      (child, h, cArea) => split(child, h, cArea) as [SafeNode, SafeNode],
+    );
+
+    const columnViews = createColumnViews(
+      node as SafeViewNode,
+      colChildren,
+      colWidth,
+    );
+
+    const currentViewWithRow = Object.assign({}, currentNode, {
+      style: {
+        ...currentNode.style,
+        flexDirection: 'row',
+        columnGap,
+      },
+    });
+
+    return [
+      assingChildren(columnViews, currentViewWithRow),
+      assingChildren(nextChildren, nextNode),
+    ];
+  }
+
   const [currentChilds, nextChildren] = splitChildren(
     height,
     contentArea,

@@ -38,6 +38,15 @@ interface TextProps extends BaseProps {
 interface ViewProps extends BaseProps {
   wrap?: boolean;
   render?: (props: { pageNumber: number }) => any;
+  /**
+   * Number of columns for multi-column layout.
+   * When > 1, content flows to the next column before wrapping to the next page.
+   */
+  columns?: number;
+  /**
+   * Gap between columns in points. Only used when columns > 1.
+   */
+  columnGap?: number;
 }
 
 interface PageProps extends BaseProps {
