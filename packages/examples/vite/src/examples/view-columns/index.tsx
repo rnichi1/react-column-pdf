@@ -18,90 +18,48 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     textAlign: 'justify',
   },
-  red: {
-    color: 'red',
-  },
-  blue: {
-    color: 'blue',
-  },
-  green: {
-    color: 'green',
-  },
-  yellow: {
-    color: 'yellow',
-  },
-  purple: {
-    color: 'purple',
-  },
 });
 
 const ViewColumns = () => (
   <Document>
     <Page size="A4" style={styles.body}>
-      <Text style={styles.title}>View Columns</Text>
-      <Text style={styles.title}>View Columns</Text>
-      <Text style={styles.title}>View Columns</Text>
-      <Text style={styles.title}>View Columns</Text>
+      <Text style={styles.title}>Two-Column Layout</Text>
       <View columns={2} columnGap={18}>
-        <Text style={[styles.block, styles.red]} debug>
+        <Text style={styles.block}>
           {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
+          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
           {LOREM} {LOREM} {LOREM} {LOREM}
           {LOREM} {LOREM} {LOREM} {LOREM}
           {LOREM} {LOREM} {LOREM} {LOREM}
           {LOREM} {LOREM} {LOREM} {LOREM}
         </Text>
-        <Text style={[styles.block, styles.blue]} debug>
+        <Text style={styles.block}>
           {LOREM} {LOREM} {LOREM} {LOREM}
-          {LOREM} {LOREM} {LOREM} {LOREM}
-          {LOREM} {LOREM} {LOREM} {LOREM}
+        </Text>
+        <Text style={styles.block}>
           {LOREM} {LOREM} {LOREM} {LOREM}
           {LOREM} {LOREM} {LOREM} {LOREM}
         </Text>
-        <Text style={[styles.block, styles.green]} debug>
+        <Text style={styles.block}>
           {LOREM} {LOREM} {LOREM} {LOREM}
         </Text>
-        <Text style={[styles.block, styles.yellow]} debug>
+        <Text style={styles.block}>
           {LOREM} {LOREM} {LOREM} {LOREM}
-          {LOREM} {LOREM} {LOREM} {LOREM}
-          {LOREM} {LOREM} {LOREM} {LOREM}
-          {LOREM} {LOREM} {LOREM} {LOREM}
-        </Text>
-        <Text style={[styles.block, styles.purple]} debug>
-          {LOREM} {LOREM} {LOREM} {LOREM}
-        </Text>
-        <Text style={[styles.block, styles.red]} debug>
-          {LOREM} {LOREM} {LOREM} {LOREM}
-          {LOREM} {LOREM} {LOREM} {LOREM}
-        </Text>
-        <Text style={[styles.block, styles.blue]} debug>
-          {LOREM} {LOREM} {LOREM} {LOREM}
-        </Text>
-        <Text style={[styles.block, styles.green]} debug>
-          {LOREM} {LOREM} {LOREM} {LOREM}
-        </Text>
-        <Text style={[styles.block, styles.yellow]} debug>
-          {LOREM} {LOREM} {LOREM} {LOREM}
-        </Text>
-        <Text style={[styles.block, styles.purple]} debug>
-          {LOREM} {LOREM} {LOREM} {LOREM}
-        </Text>
-        <Text style={[styles.block, styles.red]} debug>
-          {LOREM} {LOREM}
         </Text>
         <Text style={styles.block}>
           {LOREM} {LOREM}
         </Text>
-        <Text style={[styles.block]} debug>
-          {LOREM} {LOREM}
-        </Text>
-        <Text style={styles.block} debug>
-          {LOREM} {LOREM}
-        </Text>
-        <Text style={{ ...styles.block, ...styles.red }} debug>
-          {LOREM} {LOREM}
-          {LOREM} {LOREM}
-          {LOREM} {LOREM}
-          {LOREM} {LOREM}
+        <Text style={styles.block}>
           {LOREM} {LOREM}
         </Text>
       </View>
@@ -111,8 +69,8 @@ const ViewColumns = () => (
 
 export default {
   id: 'view-columns',
-  name: 'View Columns',
+  name: 'View Columns (2)',
   description:
-    'View with columns={2} prop - content flows to next column before wrapping to next page',
+    'View with columns={2} - content flows left to right, then to next page',
   Document: ViewColumns,
 };

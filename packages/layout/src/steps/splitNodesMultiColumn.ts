@@ -6,8 +6,11 @@ import getNodeHeightAtWidth, {
   getSpacingHeight,
 } from '../node/getNodeHeightAtWidth';
 import isFixed from '../node/isFixed';
-import shouldNodeBreak from '../node/shouldBreak';
 import { SafeNode } from '../types';
+
+/** Only respect explicit break prop in column context; child.box.top is from full-width layout. */
+const getBreak = (node: SafeNode) =>
+  'break' in node.props ? node.props.break : false;
 
 const isText = (node: SafeNode) => node.type === P.Text;
 
@@ -79,12 +82,7 @@ const splitNodesMultiColumn = (
     }
 
     const nodeHeight = getNodeHeightAtWidth(child, colWidth, fontStore);
-    const shouldBreak = shouldNodeBreak(
-      child,
-      futureNodes,
-      height,
-      colChildren[colIndex],
-    );
+    const shouldBreak = getBreak(child);
 
     if (shouldBreak) {
       const box = Object.assign({}, child.box, {

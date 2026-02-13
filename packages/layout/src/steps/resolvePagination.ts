@@ -186,6 +186,7 @@ const splitNodes = (
             ...viewChild.style,
             flexDirection: 'row',
             columnGap,
+            alignItems: 'flex-start',
           },
           children: columnViews,
         });
@@ -256,6 +257,7 @@ const transformViewToColumns = (
       ...node.style,
       flexDirection: 'row',
       columnGap,
+      alignItems: 'flex-start',
     },
     children: columnViews,
   });
@@ -300,6 +302,7 @@ const splitView = (
         ...currentNode.style,
         flexDirection: 'row',
         columnGap,
+        alignItems: 'flex-start',
       },
     });
 
