@@ -1,5 +1,14 @@
 # @react-pdf/renderer
 
+## 4.4.1
+
+### Patch Changes
+
+- fix lib versions
+
+- Updated dependencies []:
+  - @rnichi11/react-column-pdf-layout@4.5.1
+
 ## 4.4.0
 
 ### Minor Changes

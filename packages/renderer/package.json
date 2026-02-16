@@ -1,6 +1,6 @@
 {
   "name": "react-column-pdf",
-  "version": "4.4.0",
+  "version": "4.4.1",
   "license": "MIT",
   "description": "React PDF renderer with multi-column layout support",
   "author": "rnichi1",
@@ -26,7 +26,7 @@
     "@babel/runtime": "^7.20.13",
     "@react-pdf/fns": "3.1.2",
     "@react-pdf/font": "^4.0.4",
-    "@rnichi11/react-column-pdf-layout": "4.5.0",
+    "@rnichi11/react-column-pdf-layout": "4.5.1",
     "@react-pdf/pdfkit": "^4.1.0",
     "@react-pdf/primitives": "^4.1.1",
     "@react-pdf/reconciler": "^2.0.0",

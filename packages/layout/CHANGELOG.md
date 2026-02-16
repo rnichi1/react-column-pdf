@@ -1,5 +1,14 @@
 # @react-pdf/layout
 
+## 4.5.1
+
+### Patch Changes
+
+- fix lib versions
+
+- Updated dependencies []:
+  - @rnichi11/react-column-pdf-stylesheet@6.2.1
+
 ## 4.5.0
 
 ### Minor Changes

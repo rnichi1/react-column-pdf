@@ -9,7 +9,7 @@
   "baseBranch": "master",
   "updateInternalDependencies": "patch",
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
-    "updateInternalDependents": "always"
+    "updateInternalDependents": "out-of-range"
   },
   "ignore": []
 }

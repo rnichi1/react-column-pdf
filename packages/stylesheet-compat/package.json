@@ -1,11 +1,11 @@
 {
   "name": "@react-pdf/stylesheet",
   "private": true,
-  "version": "6.1.3",
+  "version": "6.1.4",
   "type": "module",
   "main": "./index.js",
   "types": "./index.d.ts",
   "dependencies": {
-    "@rnichi11/react-column-pdf-stylesheet": "6.2.0"
+    "@rnichi11/react-column-pdf-stylesheet": "6.2.1"
   }
 }
