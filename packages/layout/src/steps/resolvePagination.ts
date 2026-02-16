@@ -191,7 +191,8 @@ const splitNodes = (
           children: overflowChildren,
           box: { ...viewChild.box, top: 0 },
         });
-        currentChildren.push(currentViewWithCols);
+        // Keep fixed siblings (eg fixed footers/headers) on current page too.
+        currentChildren.push(currentViewWithCols, ...futureFixedNodes);
         nextChildren.push(nextViewWithOverflow, ...futureNodes);
         break;
       }

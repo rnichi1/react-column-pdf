@@ -647,4 +647,58 @@ describe('pagination step', () => {
     );
     expect(distributedCount).toBe(4);
   });
+
+  test('should keep fixed siblings on every page when multi-column view overflows', async () => {
+    const yoga = await loadYoga();
+
+    const layout = calcLayout({
+      type: 'DOCUMENT',
+      yoga,
+      props: {},
+      children: [
+        {
+          type: 'PAGE',
+          props: {},
+          style: {
+            width: 100,
+            height: 100,
+          },
+          children: [
+            {
+              type: 'VIEW',
+              props: { columns: 2, columnGap: 18 },
+              style: { width: 100 },
+              children: Array.from({ length: 8 }).map(() => ({
+                type: 'VIEW' as const,
+                style: { height: 30 },
+                props: {},
+                children: [],
+              })),
+            },
+            {
+              type: 'VIEW',
+              props: { fixed: true },
+              style: {
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                bottom: 0,
+                height: 10,
+              },
+              children: [],
+            },
+          ],
+        },
+      ],
+    });
+
+    expect(layout.children.length).toBeGreaterThan(1);
+
+    for (const page of layout.children) {
+      const hasFixedFooter = (page.children || []).some(
+        (child) => child.type === 'VIEW' && child.props?.fixed === true,
+      );
+      expect(hasFixedFooter).toBe(true);
+    }
+  });
 });
