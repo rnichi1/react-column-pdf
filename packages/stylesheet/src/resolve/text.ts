@@ -57,13 +57,17 @@ const transformLineHeight = (
     styles.fontSize || DEFAULT_FONT_SIZE,
   ) as number;
   const lineHeight = transformUnit(container, value) as number;
+  const numericValue = Number(value);
 
   // Percent values: use this number multiplied by the element's font size
   const { percent } = matchPercent(lineHeight) || {};
   if (percent) return percent * fontSize;
 
-  // Unitless values: use this number multiplied by the element's font size
-  return isNaN(Number(value)) ? lineHeight : lineHeight * fontSize;
+  // Unitless values: use this number multiplied by the element's font size.
+  // Keep this idempotent for already-resolved numeric values from relayout.
+  if (isNaN(numericValue)) return lineHeight;
+
+  return Math.abs(numericValue) <= 5 ? lineHeight * fontSize : lineHeight;
 };
 
 const processLineHeight = <K extends StyleKey>(

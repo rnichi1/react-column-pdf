@@ -61,6 +61,12 @@ const relayoutDynamicPage = compose(
   resolvePageStyles,
 );
 
+const relayoutDynamicPageForIndices = compose(
+  resolveTextLayout,
+  resolvePageDimensions,
+  resolveInheritance,
+);
+
 const warnUnavailableSpace = (node: SafeNode) => {
   console.warn(
     `Node of type ${node.type} can't wrap between pages and it's bigger than available page height`,
@@ -428,9 +434,13 @@ const resolveDynamicPage = (
   page: SafePageNode,
   fontStore: FontStore,
   yoga: YogaInstance,
+  options?: { resolveStyles?: boolean },
 ) => {
   if (shouldResolveDynamicNodes(page)) {
     const resolvedPage = resolveDynamicNodes(props, page);
+    if (options?.resolveStyles === false) {
+      return relayoutDynamicPageForIndices(resolvedPage, fontStore, yoga);
+    }
     return relayoutDynamicPage(resolvedPage, fontStore, yoga);
   }
 
@@ -493,7 +503,9 @@ const resolvePageIndices = (fontStore, yoga, page, pageNumber, pages) => {
     subPageTotalPages: page.subPageTotalPages,
   };
 
-  return resolveDynamicPage(props, page, fontStore, yoga);
+  return resolveDynamicPage(props, page, fontStore, yoga, {
+    resolveStyles: false,
+  });
 };
 
 const assocSubPageData = (subpages) => {

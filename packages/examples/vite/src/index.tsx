@@ -8,7 +8,7 @@ import EXAMPLES from './examples';
 
 const ExamplesPage = () => {
   const [hash, setHash] = useState(
-    window.location.hash.substring(1) || 'two-columns',
+    window.location.hash.substring(1) || 'view-columns',
   );
 
   const index = EXAMPLES.findIndex((example) => example.id === hash);

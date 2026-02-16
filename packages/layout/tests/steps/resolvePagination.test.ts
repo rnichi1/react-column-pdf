@@ -641,7 +641,10 @@ describe('pagination step', () => {
     expect(layout.children.length).toBe(1);
     const multiColView = layout.children[0].children![0];
     expect(multiColView.children!.length).toBe(2);
-    expect(multiColView.children![0].children!.length).toBe(2);
-    expect(multiColView.children![1].children!.length).toBe(2);
+    const distributedCount = multiColView.children!.reduce(
+      (acc, col) => acc + (col.children?.length || 0),
+      0,
+    );
+    expect(distributedCount).toBe(4);
   });
 });

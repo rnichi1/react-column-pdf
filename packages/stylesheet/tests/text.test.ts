@@ -175,6 +175,14 @@ describe('resolve stylesheet text', () => {
     expect(styles.lineHeight).toBeCloseTo(56.69, 1);
   });
 
+  test('should not remultiply resolved absolute line height values', () => {
+    const firstPass = resolveStyle({ lineHeight: 2, fontSize: 10 });
+    const secondPass = resolveStyle(firstPass);
+
+    expect(firstPass.lineHeight).toBe(20);
+    expect(secondPass.lineHeight).toBe(20);
+  });
+
   test('should resolve font family', () => {
     const styles = resolveStyle({ fontFamily: 'Helvetica' });
 
