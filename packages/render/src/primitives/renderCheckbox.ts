@@ -1,4 +1,4 @@
-import { SafeCheckboxNode } from '@react-pdf/layout';
+import { SafeCheckboxNode } from '@rnichi11/react-column-pdf-layout';
 import { Context, RenderOptions } from '../types';
 import { parseCheckboxOptions } from '../utils/parseFormOptions';
 

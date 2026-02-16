@@ -1,4 +1,4 @@
-import { SafeCanvasNode } from '@react-pdf/layout';
+import { SafeCanvasNode } from '@rnichi11/react-column-pdf-layout';
 import { Context } from '../types';
 
 const availableMethods = [

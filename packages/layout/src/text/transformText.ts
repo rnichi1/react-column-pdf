@@ -1,5 +1,5 @@
 import { capitalize, upperFirst } from '@react-pdf/fns';
-import { SafeStyle } from '@react-pdf/stylesheet';
+import { SafeStyle } from '@rnichi11/react-column-pdf-stylesheet';
 
 /**
  * Apply transformation to text string

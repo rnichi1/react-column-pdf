@@ -1,5 +1,19 @@
 # @react-pdf/renderer
 
+## 4.4.0
+
+### Minor Changes
+
+- fix line height and fixed children
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @rnichi11/react-column-pdf-layout@4.5.0
+  - @react-pdf/types@2.9.3
+  - @react-pdf/render@4.3.3
+  - @react-pdf/font@4.0.5
+
 ## 4.3.4
 
 ### Patch Changes

@@ -1,4 +1,4 @@
-import { SafeLineNode } from '@react-pdf/layout';
+import { SafeLineNode } from '@rnichi11/react-column-pdf-layout';
 import { Context } from '../types';
 
 const renderLine = (ctx: Context, node: SafeLineNode) => {

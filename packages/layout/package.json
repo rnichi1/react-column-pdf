@@ -1,6 +1,6 @@
 {
   "name": "@rnichi11/react-column-pdf-layout",
-  "version": "4.4.4",
+  "version": "4.5.0",
   "license": "MIT",
   "description": "Multi-column layout engine for react-column-pdf",
   "author": "rnichi1",
@@ -23,7 +23,7 @@
     "@react-pdf/fns": "3.1.2",
     "@react-pdf/image": "^3.0.4",
     "@react-pdf/primitives": "^4.1.1",
-    "@react-pdf/stylesheet": "^6.1.2",
+    "@rnichi11/react-column-pdf-stylesheet": "^6.2.0",
     "@rnichi11/react-column-pdf-textkit": "6.1.1",
     "@react-pdf/types": "^2.9.2",
     "emoji-regex-xs": "^1.0.0",

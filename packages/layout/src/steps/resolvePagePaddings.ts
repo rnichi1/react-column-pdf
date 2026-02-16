@@ -1,5 +1,5 @@
 import { evolve, matchPercent } from '@react-pdf/fns';
-import { SafeStyle } from '@react-pdf/stylesheet';
+import { SafeStyle } from '@rnichi11/react-column-pdf-stylesheet';
 
 import { SafeDocumentNode, SafePageNode } from '../types';
 

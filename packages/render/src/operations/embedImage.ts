@@ -1,4 +1,4 @@
-import { SafeImageNode } from '@react-pdf/layout';
+import { SafeImageNode } from '@rnichi11/react-column-pdf-layout';
 import { Context } from '../types';
 
 const embedImage = (ctx: Context, node: SafeImageNode) => {

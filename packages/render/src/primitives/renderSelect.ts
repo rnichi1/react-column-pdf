@@ -1,4 +1,4 @@
-import { SafeSelectNode } from '@react-pdf/layout';
+import { SafeSelectNode } from '@rnichi11/react-column-pdf-layout';
 
 import { Context } from '../types';
 import { parseSelectAndListFieldOptions } from '../utils/parseFormOptions';

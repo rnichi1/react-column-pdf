@@ -1,5 +1,5 @@
 import * as P from '@react-pdf/primitives';
-import { SafeNode } from '@react-pdf/layout';
+import { SafeNode } from '@rnichi11/react-column-pdf-layout';
 
 import renderSvg from './renderSvg';
 import renderText from './renderText';

@@ -4,7 +4,7 @@ import * as P from '@react-pdf/primitives';
 
 import createCTX from '../ctx';
 import renderEllipse from '../../src/primitives/renderEllipse';
-import { SafeEllipseNode } from '@react-pdf/layout';
+import { SafeEllipseNode } from '@rnichi11/react-column-pdf-layout';
 
 const round = (num) => Math.round(num * 100) / 100;
 

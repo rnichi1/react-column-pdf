@@ -1,17 +1,17 @@
 {
-  "name": "@react-pdf/stylesheet",
-  "private": true,
-  "version": "6.1.2",
+  "name": "@rnichi11/react-column-pdf-stylesheet",
+  "private": false,
+  "version": "6.2.0",
   "license": "MIT",
   "description": "A styles engine for Node and the browser",
-  "author": "Diego Muracciole <diegomuracciole@gmail.com>",
-  "homepage": "https://github.com/diegomura/react-pdf#readme",
+  "author": "rnichi1",
+  "homepage": "https://github.com/rnichi1/react-column-pdf#readme",
   "type": "module",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/diegomura/react-pdf.git",
+    "url": "https://github.com/rnichi1/react-column-pdf.git",
     "directory": "packages/stylesheet"
   },
   "scripts": {
@@ -30,5 +30,8 @@
   },
   "files": [
     "lib"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }

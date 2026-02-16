@@ -1,4 +1,4 @@
-import { SafePathNode } from '@react-pdf/layout';
+import { SafePathNode } from '@rnichi11/react-column-pdf-layout';
 import { Context } from '../types';
 
 const renderPath = (ctx: Context, node: SafePathNode) => {

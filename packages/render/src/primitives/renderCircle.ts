@@ -1,4 +1,4 @@
-import { SafeCircleNode } from '@react-pdf/layout';
+import { SafeCircleNode } from '@rnichi11/react-column-pdf-layout';
 
 import { Context } from '../types';
 import { drawEllipse } from './renderEllipse';

@@ -1,5 +1,13 @@
 # @react-pdf/types
 
+## 2.9.3
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @rnichi11/react-column-pdf-stylesheet@6.2.0
+  - @react-pdf/font@4.0.5
+
 ## 2.9.2
 
 ### Patch Changes

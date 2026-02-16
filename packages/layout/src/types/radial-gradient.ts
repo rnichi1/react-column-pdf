@@ -1,5 +1,5 @@
 import * as P from '@react-pdf/primitives';
-import { Transform } from '@react-pdf/stylesheet';
+import { Transform } from '@rnichi11/react-column-pdf-stylesheet';
 
 import { SafeStopNode, StopNode } from './stop';
 

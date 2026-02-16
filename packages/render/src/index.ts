@@ -1,4 +1,4 @@
-import type { SafeDocumentNode } from '@react-pdf/layout';
+import type { SafeDocumentNode } from '@rnichi11/react-column-pdf-layout';
 
 import renderNode from './primitives/renderNode';
 import addBookmarks from './operations/addBookmarks';

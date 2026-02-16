@@ -1,5 +1,12 @@
 # @react-pdf/font
 
+## 4.0.5
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @react-pdf/types@2.9.3
+
 ## 4.0.4
 
 ### Patch Changes

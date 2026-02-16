@@ -23,9 +23,6 @@ const appendChild = (parent, child) => {
   // Ignore orphan text instances.
   // Caused by cases such as <>{name && <Text>{name}</Text>}</>
   if (isOrphanTextInstance) {
-    console.warn(
-      `Invalid '${child.value}' string child outside <Text> component`,
-    );
     return;
   }
 

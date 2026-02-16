@@ -3,7 +3,7 @@ import {
   SafeTextNode,
   SafeTspanNode,
   TextAnchor,
-} from '@react-pdf/layout';
+} from '@rnichi11/react-column-pdf-layout';
 import { AttributedString, Run } from '@react-pdf/textkit';
 
 import { Context } from '../types';

@@ -4,7 +4,7 @@ import * as P from '@react-pdf/primitives';
 
 import createCTX from '../ctx';
 import renderCircle from '../../src/primitives/renderCircle';
-import { SafeCircleNode } from '@react-pdf/layout';
+import { SafeCircleNode } from '@rnichi11/react-column-pdf-layout';
 
 const round = (num: number) => Math.round(num * 100) / 100;
 

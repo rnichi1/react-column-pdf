@@ -1,5 +1,5 @@
 import * as P from '@react-pdf/primitives';
-import { SafeStyle, Style } from '@react-pdf/stylesheet';
+import { SafeStyle, Style } from '@rnichi11/react-column-pdf-stylesheet';
 
 import {
   Origin,

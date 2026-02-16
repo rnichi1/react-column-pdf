@@ -1,5 +1,8 @@
 import * as P from '@react-pdf/primitives';
-import stylesheet, { Container, Style } from '@react-pdf/stylesheet';
+import stylesheet, {
+  Container,
+  Style,
+} from '@rnichi11/react-column-pdf-stylesheet';
 
 import {
   DocumentNode,

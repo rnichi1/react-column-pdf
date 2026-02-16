@@ -1,6 +1,8 @@
 import * as P from '@react-pdf/primitives';
 import FontStore from '@react-pdf/font';
-import resolveStyle, { transformColor } from '@react-pdf/stylesheet';
+import resolveStyle, {
+  transformColor,
+} from '@rnichi11/react-column-pdf-stylesheet';
 import {
   pick,
   evolve,

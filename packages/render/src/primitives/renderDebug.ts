@@ -1,4 +1,4 @@
-import { SafeNode } from '@react-pdf/layout';
+import { SafeNode } from '@rnichi11/react-column-pdf-layout';
 import { Context } from '../types';
 
 const CONTENT_COLOR = '#a1c6e7';

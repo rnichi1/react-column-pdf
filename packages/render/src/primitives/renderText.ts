@@ -3,7 +3,7 @@ import { isNil } from '@react-pdf/fns';
 import renderGlyphs from './renderGlyphs';
 import parseColor from '../utils/parseColor';
 import { Context } from '../types';
-import { SafeTextNode } from '@react-pdf/layout';
+import { SafeTextNode } from '@rnichi11/react-column-pdf-layout';
 import {
   Attachment,
   AttributedString,

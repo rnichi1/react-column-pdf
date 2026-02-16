@@ -4,7 +4,7 @@ import * as P from '@react-pdf/primitives';
 
 import createCTX from '../ctx';
 import renderCanvas from '../../src/primitives/renderCanvas';
-import { Box, SafeCanvasNode } from '@react-pdf/layout';
+import { Box, SafeCanvasNode } from '@rnichi11/react-column-pdf-layout';
 
 describe('primitive renderCanvas', () => {
   test('should be scoped operation', () => {

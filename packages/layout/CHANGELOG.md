@@ -1,5 +1,17 @@
 # @react-pdf/layout
 
+## 4.5.0
+
+### Minor Changes
+
+- fix line height and fixed children
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @rnichi11/react-column-pdf-stylesheet@6.2.0
+  - @react-pdf/types@2.9.3
+
 ## 4.4.4
 
 ### Patch Changes

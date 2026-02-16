@@ -1,5 +1,16 @@
 # @react-pdf/stylesheet
 
+## 6.2.0
+
+### Minor Changes
+
+- fix line height and fixed children
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @react-pdf/types@2.9.3
+
 ## 6.1.2
 
 ### Patch Changes

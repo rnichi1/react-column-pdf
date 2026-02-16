@@ -3,7 +3,7 @@ import * as P from '@react-pdf/primitives';
 
 import createCTX from '../ctx';
 import renderFieldSet from '../../src/primitives/renderFieldSet';
-import { SafeFieldSetNode } from '@react-pdf/layout';
+import { SafeFieldSetNode } from '@rnichi11/react-column-pdf-layout';
 
 describe('primitive renderFieldSet', () => {
   test('should render FieldSet correctly', () => {

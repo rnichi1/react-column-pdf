@@ -1,4 +1,4 @@
-import { SafeDocumentNode, SafeNode } from '@react-pdf/layout';
+import { SafeDocumentNode, SafeNode } from '@rnichi11/react-column-pdf-layout';
 
 import { Context } from '../types';
 

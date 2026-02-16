@@ -1,6 +1,6 @@
 import * as P from '@react-pdf/primitives';
 import { pick, compose } from '@react-pdf/fns';
-import { SafeStyle } from '@react-pdf/stylesheet';
+import { SafeStyle } from '@rnichi11/react-column-pdf-stylesheet';
 
 import { SafeNode } from '../types';
 

@@ -1,7 +1,7 @@
 {
   "name": "@react-pdf/types",
   "private": true,
-  "version": "2.9.2",
+  "version": "2.9.3",
   "license": "MIT",
   "description": "React-pdf TypeScript definitions",
   "author": "Diego Muracciole <diegomuracciole@gmail.com>",
@@ -15,6 +15,6 @@
   "dependencies": {
     "@react-pdf/font": "^4.0.4",
     "@react-pdf/primitives": "^4.1.1",
-    "@react-pdf/stylesheet": "^6.1.2"
+    "@rnichi11/react-column-pdf-stylesheet": "^6.2.0"
   }
 }

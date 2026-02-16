@@ -1,4 +1,4 @@
-import { SafeRectNode } from '@react-pdf/layout';
+import { SafeRectNode } from '@rnichi11/react-column-pdf-layout';
 import { Context } from '../types';
 
 const KAPPA = 4.0 * ((Math.sqrt(2) - 1.0) / 3.0);

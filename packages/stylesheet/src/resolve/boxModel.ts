@@ -27,7 +27,7 @@ const logError = (style: string | number | symbol, value: unknown) => {
 
   // eslint-disable-next-line no-console
   console.error(`
-    @react-pdf/stylesheet parsing error:
+    @rnichi11/react-column-pdf-stylesheet parsing error:
     ${name}: ${value},
     ${' '.repeat(name.length + 2)}^
     Unsupported ${name} value format

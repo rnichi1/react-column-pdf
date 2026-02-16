@@ -1,5 +1,12 @@
 # @react-pdf/examples
 
+## 3.3.23
+
+### Patch Changes
+
+- Updated dependencies []:
+  - react-column-pdf@4.4.0
+
 ## 3.3.22
 
 ### Patch Changes

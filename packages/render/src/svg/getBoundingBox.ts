@@ -12,7 +12,7 @@ import {
   SafePathNode,
   SafePolylineNode,
   SafeRectNode,
-} from '@react-pdf/layout';
+} from '@rnichi11/react-column-pdf-layout';
 
 type Primitives = (typeof P)[keyof typeof P];
 

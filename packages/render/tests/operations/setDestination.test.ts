@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 
 import * as P from '@react-pdf/primitives';
-import { SafeNode } from '@react-pdf/layout';
+import { SafeNode } from '@rnichi11/react-column-pdf-layout';
 
 import createCTX from '../ctx';
 import setDestination from '../../src/operations/setDestination';

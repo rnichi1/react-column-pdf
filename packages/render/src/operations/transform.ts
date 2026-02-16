@@ -1,5 +1,5 @@
-import { SafeNode } from '@react-pdf/layout';
-import { Transform } from '@react-pdf/stylesheet';
+import { SafeNode } from '@rnichi11/react-column-pdf-layout';
+import { Transform } from '@rnichi11/react-column-pdf-stylesheet';
 
 import { Context } from '../types';
 
