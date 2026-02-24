@@ -21,11 +21,11 @@
   },
   "dependencies": {
     "@react-pdf/fns": "3.1.2",
-    "@react-pdf/image": "^3.0.4",
+    "@rnichi11/react-column-pdf-image": "^3.0.4",
     "@react-pdf/primitives": "^4.1.1",
     "@rnichi11/react-column-pdf-stylesheet": "^6.2.1",
     "@rnichi11/react-column-pdf-textkit": "6.1.1",
-    "@react-pdf/types": "^2.9.2",
+    "@rnichi11/react-column-pdf-types": "^2.9.3",
     "emoji-regex-xs": "^1.0.0",
     "queue": "^6.0.1",
     "yoga-layout": "^3.2.1"

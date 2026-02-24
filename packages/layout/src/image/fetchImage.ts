@@ -1,4 +1,4 @@
-import resolveImage from '@react-pdf/image';
+import resolveImage from '@rnichi11/react-column-pdf-image';
 
 import getSource from './getSource';
 import resolveSource from './resolveSource';

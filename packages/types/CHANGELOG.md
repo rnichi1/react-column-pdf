@@ -1,4 +1,4 @@
-# @react-pdf/types
+# @rnichi11/react-column-pdf-types
 
 ## 2.9.3
 

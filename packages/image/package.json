@@ -1,6 +1,5 @@
 {
-  "name": "@react-pdf/image",
-  "private": true,
+  "name": "@rnichi11/react-column-pdf-image",
   "version": "3.0.4",
   "license": "MIT",
   "description": "Parses the images in png or jpeg format for react-pdf document",
@@ -30,5 +29,8 @@
   },
   "files": [
     "lib"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }

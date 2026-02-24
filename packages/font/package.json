@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@react-pdf/pdfkit": "^4.1.0",
-    "@react-pdf/types": "^2.9.3",
+    "@react-pdf/types": "^2.9.2",
     "fontkit": "^2.0.2",
     "is-url": "^1.2.4"
   },

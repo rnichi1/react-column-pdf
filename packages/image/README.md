@@ -2,20 +2,20 @@
   <img src="https://user-images.githubusercontent.com/5600341/27505816-c8bc37aa-587f-11e7-9a86-08a2d081a8b9.png" height="280px">
 </p>
 
-# @react-pdf/image
+# @rnichi11/react-column-pdf-image
 
 Image parsing and resolution library for react-pdf. Handles PNG and JPEG images from various sources including local files, remote URLs, base64 data URIs, buffers, and blobs.
 
 ## Installation
 
 ```bash
-yarn add @react-pdf/image
+yarn add @rnichi11/react-column-pdf-image
 ```
 
 ## Usage
 
 ```js
-import resolveImage from '@react-pdf/image';
+import resolveImage from '@rnichi11/react-column-pdf-image';
 
 const image = await resolveImage({ uri: './path/to/image.png' });
 

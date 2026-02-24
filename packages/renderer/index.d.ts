@@ -13,7 +13,7 @@ import {
   Bookmark,
   PageLayout,
   PageMode,
-} from '@react-pdf/types';
+} from '@rnichi11/react-column-pdf-types';
 
 declare class ReactPDF {
   static default: typeof ReactPDF;

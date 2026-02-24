@@ -1,6 +1,5 @@
 {
-  "name": "@react-pdf/types",
-  "private": true,
+  "name": "@rnichi11/react-column-pdf-types",
   "version": "2.9.3",
   "license": "MIT",
   "description": "React-pdf TypeScript definitions",
@@ -16,5 +15,8 @@
     "@react-pdf/font": "^4.0.4",
     "@react-pdf/primitives": "^4.1.1",
     "@rnichi11/react-column-pdf-stylesheet": "^6.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

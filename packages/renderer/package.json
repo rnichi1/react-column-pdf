@@ -31,7 +31,7 @@
     "@react-pdf/primitives": "^4.1.1",
     "@react-pdf/reconciler": "^2.0.0",
     "@react-pdf/render": "^4.3.2",
-    "@react-pdf/types": "^2.9.2",
+    "@rnichi11/react-column-pdf-types": "^2.9.3",
     "events": "^3.3.0",
     "object-assign": "^4.1.1",
     "prop-types": "^15.6.2",

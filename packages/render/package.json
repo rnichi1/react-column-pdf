@@ -24,7 +24,7 @@
     "@react-pdf/fns": "3.1.2",
     "@react-pdf/primitives": "^4.1.1",
     "@react-pdf/textkit": "^6.1.0",
-    "@react-pdf/types": "^2.9.3",
+    "@react-pdf/types": "^2.9.2",
     "abs-svg-path": "^0.1.1",
     "color-string": "^1.9.1",
     "normalize-svg-path": "^1.1.0",

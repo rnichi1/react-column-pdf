@@ -1,4 +1,4 @@
-# @react-pdf/image
+# @rnichi11/react-column-pdf-image
 
 ## 3.0.4
 

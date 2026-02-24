@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@react-pdf/fns": "3.1.2",
-    "@react-pdf/types": "^2.9.2",
+    "@rnichi11/react-column-pdf-types": "^2.9.3",
     "color-string": "^1.9.1",
     "hsl-to-hex": "^1.0.0",
     "media-engine": "^1.0.3",
