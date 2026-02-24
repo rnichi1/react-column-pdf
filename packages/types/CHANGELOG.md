@@ -1,5 +1,11 @@
 # @rnichi11/react-column-pdf-types
 
+## 2.9.4
+
+### Patch Changes
+
+- 50b329bf: fix page layout for fixed elements
+
 ## 2.9.3
 
 ### Patch Changes

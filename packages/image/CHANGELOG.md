@@ -1,5 +1,11 @@
 # @rnichi11/react-column-pdf-image
 
+## 3.0.5
+
+### Patch Changes
+
+- 50b329bf: fix page layout for fixed elements
+
 ## 3.0.4
 
 ### Patch Changes

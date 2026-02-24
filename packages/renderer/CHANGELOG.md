@@ -1,5 +1,14 @@
 # @react-pdf/renderer
 
+## 4.4.2
+
+### Patch Changes
+
+- 50b329bf: fix page layout for fixed elements
+- Updated dependencies [50b329bf]
+  - @rnichi11/react-column-pdf-layout@4.5.2
+  - @rnichi11/react-column-pdf-types@2.9.4
+
 ## 4.4.1
 
 ### Patch Changes
