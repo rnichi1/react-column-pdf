@@ -1,6 +1,7 @@
 import fs from 'fs';
 import url from 'url';
 import path from 'path';
+import { Buffer } from 'buffer';
 
 import PNG from './png';
 import JPEG from './jpeg';

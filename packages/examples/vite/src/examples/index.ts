@@ -24,6 +24,7 @@ import viewColumns from './view-columns';
 import viewColumnsMagazine from './view-columns-magazine';
 import viewColumnsBreak from './view-columns-break';
 import viewColumnsDynamicFooterBug from './view-columns-dynamic-footer-bug';
+import viewColumnsFixedImageHeader from './view-columns-fixed-image-header';
 
 const EXAMPLES = [
   duplicatedImages,
@@ -52,6 +53,7 @@ const EXAMPLES = [
   viewColumnsMagazine,
   viewColumnsBreak,
   viewColumnsDynamicFooterBug,
+  viewColumnsFixedImageHeader,
 ];
 
 export default EXAMPLES;

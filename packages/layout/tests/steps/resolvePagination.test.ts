@@ -701,4 +701,56 @@ describe('pagination step', () => {
       expect(hasFixedFooter).toBe(true);
     }
   });
+
+  test('should not create an extra page for fixed-only overflow in multi-column view', async () => {
+    const yoga = await loadYoga();
+
+    const layout = calcLayout({
+      type: 'DOCUMENT',
+      yoga,
+      props: {},
+      children: [
+        {
+          type: 'PAGE',
+          props: {},
+          style: {
+            width: 200,
+            height: 200,
+          },
+          children: [
+            {
+              type: 'VIEW',
+              props: { columns: 2, columnGap: 18 },
+              style: { width: 200 },
+              children: [
+                {
+                  type: 'IMAGE',
+                  props: { fixed: true, src: 'https://example.com/test.jpg' },
+                  style: {
+                    width: 200,
+                    height: 40,
+                  },
+                  children: [],
+                },
+                {
+                  type: 'VIEW',
+                  style: { height: 60 },
+                  props: {},
+                  children: [],
+                },
+                {
+                  type: 'VIEW',
+                  style: { height: 60 },
+                  props: {},
+                  children: [],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    });
+
+    expect(layout.children.length).toBe(1);
+  });
 });

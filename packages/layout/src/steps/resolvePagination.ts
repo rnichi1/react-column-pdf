@@ -176,7 +176,9 @@ const splitNodes = (
           fontStore,
         );
 
-      if (overflowChildren.length > 0) {
+      const hasNonFixedOverflow = overflowChildren.some((n) => !isFixed(n));
+
+      if (hasNonFixedOverflow) {
         const columnViews = createColumnViews(viewChild, colChildren, colWidth);
         const currentViewWithCols = Object.assign({}, viewChild, {
           style: {

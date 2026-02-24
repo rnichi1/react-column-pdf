@@ -28,7 +28,13 @@ const fetchImage = async (node: SafeImageNode) => {
 
     node.image = await resolveImage(source, { cache });
 
-    if (Buffer.isBuffer(source) || source instanceof Blob) return;
+    const isBufferSource =
+      source != null &&
+      typeof source === 'object' &&
+      typeof (source as { copy?: unknown }).copy === 'function' &&
+      typeof (source as { subarray?: unknown }).subarray === 'function';
+
+    if (isBufferSource || source instanceof Blob) return;
 
     node.image.key = 'data' in source ? source.data.toString() : source.uri;
   } catch (e: any) {
