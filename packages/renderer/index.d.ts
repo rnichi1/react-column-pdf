@@ -118,7 +118,9 @@ declare namespace ReactPDF {
     debug?: boolean;
     render?: (props: {
       pageNumber: number;
-      subPageNumber: number;
+      totalPages?: number;
+      subPageNumber?: number;
+      subPageTotalPages?: number;
     }) => React.ReactNode;
     /**
      * Number of columns for multi-column layout.
